@@ -1,7 +1,5 @@
 #! /usr/bin/env node
 
-// This needs to be reformatted and re worked to be better. -Dustin
-
 'use strict';
 
 const fsp = require('fs-promise');
