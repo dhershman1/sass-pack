@@ -22,9 +22,7 @@
   "bin": {
     "sass-pack": "./index.js"
   },
-  "devDependencies": {
-    "debug": "^2.2.0",
-  },
+  "devDependencies": {},
   "dependencies": {
     "node-sass": "^3.10.0",
     "fs-promise": "^1.0.0",
