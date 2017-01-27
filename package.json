@@ -1,6 +1,6 @@
 {
   "name": "sass-pack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Compile Sass down for a cssmanifest",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,10 @@
     "node-sass",
     "css"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://dhershman@bitbucket.org/dhershman/sasspack.git"
+  },
   "author": "Dustin Hershman",
   "license": "ISC",
   "preferGlobal": true,
@@ -29,3 +33,4 @@
     "progress": "^1.1.8"
   }
 }
+
