@@ -11,7 +11,7 @@ Command & Options
  - `sass-pack [options]` - Run sass-pack using your options
  - `-s` - Set the source path of page based scss `Required`
  - `-t` - Set the path to your `theme` scss `Required`
- - `-m  - Set the path of your `css_manifest.json` `Required`
+ - `-m`  - Set the path of your `css_manifest.json` `Required`
  - `-o` - Set the path for the output css `Required`
 
 Example:
