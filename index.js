@@ -11,12 +11,13 @@ const globby = require('globby');
 
 function sassPack(opts) {
 
+	let bar = {};
+
 	fsp.mkdirp(opts.o, err => {
 		if (err) {
 			throw err;
 		}
 	});
-	let bar = {};
 
 	function compile(file) {
 
