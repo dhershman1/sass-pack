@@ -1,7 +1,7 @@
 **Sass-Pack**
 =============
 
-A simple CLI system for compiling sass down to CSS and builds a css_manifest for webpack this will run completey async and uses promise based calls to compile our sass to css
+A simple CLI system for compiling sass down to CSS and builds a cssmanifest this will run completely async and uses promise based calls to compile our sass to css
 
 Since this module is not run on npm yet, you have to use `npm ln` in the sasspack directory to make sure it creates a link to your project.
 
