@@ -27,6 +27,7 @@ function sassPack(opts) {
 				file: file
 			}, (compileErr, result) => {
 				if (compileErr) {
+					console.log('its compile')
 					reject(compileErr);
 				}
 				resolve({
@@ -37,8 +38,7 @@ function sassPack(opts) {
 		});
 	}
 
-	return new Promise((resolve, reject) => {
-		globby(globbyPaths)
+		return globby(globbyPaths)
 			.then(paths => {
 				const filteredPaths = paths.filter(file => {
 					return !file.includes('framework');
@@ -61,16 +61,13 @@ function sassPack(opts) {
 				}));
 			})
 			.then(() => {
-				if (opts.o) {
+				if (opts.m) {
 					return globby(path.join(`${opts.o}`, '*.css'));
 				}
-
 				return null;
 			})
 			.then(paths => {
 				if (!paths) {
-					resolve();
-
 					return;
 				}
 				let obj = {};
@@ -81,12 +78,11 @@ function sassPack(opts) {
 					return obj;
 				});
 				fsp.writeJson(opts.m, obj);
-				resolve();
 			})
 			.catch(err => {
-				reject(err);
+				throw err;
 			});
-	});
+
 
 }
 

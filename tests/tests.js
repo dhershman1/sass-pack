@@ -23,6 +23,9 @@ test('Test Compile Without Manifest', function (t) {
         t.ok(data.includes('body .test_class'), 'Contains compiled CSS');
       });
     });
+  })
+  .catch(err => {
+    throw err;
   });
 });
 
@@ -40,7 +43,7 @@ test('Test Compile With Manifest', function (t) {
 
       t.ok(files.includes('default.css'), 'Default CSS Created');
       t.ok(files.includes('cssmanifest.json'), 'Manifest Created');
-      fs.readFile(path.join(outputPath, files[0]), {encoding: 'utf8'}, (err, data) => {
+      fs.readFile(path.join(outputPath, 'cssmanifest.json'), {encoding: 'utf8'}, (err, data) => {
         let results = JSON.parse(data);
         t.ok(results.default, 'Manifest contains path to default theme');
       });

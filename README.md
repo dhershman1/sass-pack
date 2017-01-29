@@ -1,14 +1,7 @@
 **Sass-Pack**
 =============
 
-A simple CLI system for compiling sass down to CSS and builds a cssmanifest this will run completely async and uses promise based calls to compile our sass to css
-
-#### Changelog v1.1.0
-
-* Can be used as a function
-* Added tests
-* manifest is now optional
-* source files are now optional
+A simple CLI system for compiling sass down to css. Runs async, optionally builds a css manifest.
 
 Install:
 `npm i -D sass-pack`
@@ -62,3 +55,17 @@ Requirements
  Running Tests
  ------------
  To run the tests install the module, run an `npm i` within sass pack and then `npm test`
+
+ #### Changelog v1.1.0
+
+ * Can be used as a function
+ * Added tests
+ * Manifest is now optional
+ * Source files are now optional
+
+
+  #### Changelog v1.1.1
+
+  * Optimization improvements
+  * Removed unneeded promise wrapper
+  * Promise now correctly skips steps if no manifest is declared
