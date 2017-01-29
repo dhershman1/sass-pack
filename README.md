@@ -65,3 +65,10 @@ sassPack({
 > * Optimization improvements
 > * Removed unneeded promise wrapper
 > * Promise now correctly skips steps if no manifest is declared
+
+> Changelog v1.1.2
+
+> * Code Cleanup
+> * Broke functionality out into seperate functions
+> * Removed debugging tools
+> * Added some code comments
