@@ -1,9 +1,10 @@
 {
   "name": "sass-pack",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Compile Sass down for a cssmanifest",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf tests/outputs/*.{css,json}",
+    "test": "npm run clean && node tests/tests.js"
   },
   "keywords": [
     "sass",
@@ -22,7 +23,10 @@
   "bin": {
     "sass-pack": "./index.js"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "rimraf": "^2.5.4",
+    "tape": "^4.6.3"
+  },
   "dependencies": {
     "node-sass": "^3.10.0",
     "fs-promise": "^1.0.0",
@@ -31,4 +35,3 @@
     "progress": "^1.1.8"
   }
 }
-

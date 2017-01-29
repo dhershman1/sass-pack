@@ -1,7 +1,5 @@
 #! /usr/bin/env node
 
-'use strict';
-
 const fsp = require('fs-promise');
 const sass = require('node-sass');
 const path = require('path');
@@ -11,6 +9,7 @@ const globby = require('globby');
 
 function sassPack(opts) {
 
+	const globbyPaths = (opts.s) ? [opts.t, opts.s] : opts.t;
 	let bar = {};
 
 	fsp.mkdirp(opts.o, err => {
@@ -38,49 +37,60 @@ function sassPack(opts) {
 		});
 	}
 
+	return new Promise((resolve, reject) => {
+		globby(globbyPaths)
+			.then(paths => {
+				const filteredPaths = paths.filter(file => {
+					return !file.includes('framework');
+				});
 
-	globby([opts.t, opts.s])
-		.then(paths => {
-			const filteredPaths = paths.filter(file => {
-				return !file.includes('framework');
+				bar = new ProgressBar('Compiling SASS [:bar] :current/:total :elapsed :percent', {
+					total: filteredPaths.length,
+					width: 20
+				});
+
+				return Promise.all(filteredPaths.map(file => {
+					return compile(file);
+				}));
+			})
+			.then(data => {
+				return Promise.all(data.map(({ name, result }) => {
+					bar.tick();
+
+					return fsp.writeFile(path.resolve(opts.o, `${name}.css`), result.css);
+				}));
+			})
+			.then(() => {
+				if (opts.o) {
+					return globby(path.join(`${opts.o}`, '*.css'));
+				}
+
+				return null;
+			})
+			.then(paths => {
+				if (!paths) {
+					resolve();
+
+					return;
+				}
+				let obj = {};
+
+				paths.map(file => {
+					obj[path.parse(file).name] = file;
+
+					return obj;
+				});
+				fsp.writeJson(opts.m, obj);
+				resolve();
+			})
+			.catch(err => {
+				reject(err);
 			});
+	});
 
-			bar = new ProgressBar('Compiling SASS [:bar] :current/:total :elapsed :percent', {
-				total: filteredPaths.length,
-				width: 20
-			});
-
-			return Promise.all(filteredPaths.map(file => {
-				return compile(file);
-			}));
-		})
-		.then(data => {
-			return Promise.all(data.map(({ name, result }) => {
-				bar.tick();
-
-				return fsp.writeFile(path.resolve(opts.o, `${name}.css`), result.css);
-			}));
-		})
-		.then(() => {
-			return globby(path.join(`${opts.o}`, '*.css'));
-		})
-		.then(paths => {
-			let obj = {};
-
-
-			paths.map(file => {
-				obj[path.parse(file).name] = file;
-
-				return obj;
-			});
-
-			return fsp.writeJson(opts.m, obj);
-		})
-		.catch(err => {
-			throw err;
-		});
 }
 
-sassPack(parsedArgs);
+if (parsedArgs.o && parsedArgs.t) {
+	sassPack(parsedArgs);
+}
 module.exports = sassPack;
-
