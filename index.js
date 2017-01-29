@@ -38,52 +38,50 @@ function sassPack(opts) {
 		});
 	}
 
-		return globby(globbyPaths)
-			.then(paths => {
-				const filteredPaths = paths.filter(file => {
-					return !file.includes('framework');
-				});
-
-				bar = new ProgressBar('Compiling SASS [:bar] :current/:total :elapsed :percent', {
-					total: filteredPaths.length,
-					width: 20
-				});
-
-				return Promise.all(filteredPaths.map(file => {
-					return compile(file);
-				}));
-			})
-			.then(data => {
-				return Promise.all(data.map(({ name, result }) => {
-					bar.tick();
-
-					return fsp.writeFile(path.resolve(opts.o, `${name}.css`), result.css);
-				}));
-			})
-			.then(() => {
-				if (opts.m) {
-					return globby(path.join(`${opts.o}`, '*.css'));
-				}
-				return null;
-			})
-			.then(paths => {
-				if (!paths) {
-					return;
-				}
-				let obj = {};
-
-				paths.map(file => {
-					obj[path.parse(file).name] = file;
-
-					return obj;
-				});
-				fsp.writeJson(opts.m, obj);
-			})
-			.catch(err => {
-				throw err;
+	return globby(globbyPaths)
+		.then(paths => {
+			const filteredPaths = paths.filter(file => {
+				return !file.includes('framework');
 			});
 
+			bar = new ProgressBar('Compiling SASS [:bar] :current/:total :elapsed :percent', {
+				total: filteredPaths.length,
+				width: 20
+			});
 
+			return Promise.all(filteredPaths.map(file => {
+				return compile(file);
+			}));
+		})
+		.then(data => {
+			return Promise.all(data.map(({ name, result }) => {
+				bar.tick();
+
+				return fsp.writeFile(path.resolve(opts.o, `${name}.css`), result.css);
+			}));
+		})
+		.then(() => {
+			if (opts.m) {
+				return globby(path.join(`${opts.o}`, '*.css'));
+			}
+			return null;
+		})
+		.then(paths => {
+			if (!paths) {
+				return;
+			}
+			let obj = {};
+
+			paths.map(file => {
+				obj[path.parse(file).name] = file;
+
+				return obj;
+			});
+			fsp.writeJson(opts.m, obj);
+		})
+		.catch(err => {
+			throw err;
+		});
 }
 
 if (parsedArgs.o && parsedArgs.t) {
