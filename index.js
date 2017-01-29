@@ -27,7 +27,6 @@ function sassPack(opts) {
 				file: file
 			}, (compileErr, result) => {
 				if (compileErr) {
-					console.log('its compile')
 					reject(compileErr);
 				}
 				resolve({
@@ -36,6 +35,18 @@ function sassPack(opts) {
 				});
 			});
 		});
+	}
+
+	function writeManifest(paths) {
+		let obj = {};
+
+		paths.map(file => {
+			obj[path.parse(file).name] = file;
+
+			return obj;
+		});
+
+		return fsp.writeJson(opts.m, obj);
 	}
 
 	return globby(globbyPaths)
@@ -54,7 +65,10 @@ function sassPack(opts) {
 			}));
 		})
 		.then(data => {
-			return Promise.all(data.map(({ name, result }) => {
+			return Promise.all(data.map(({
+				name,
+				result
+			}) => {
 				bar.tick();
 
 				return fsp.writeFile(path.resolve(opts.o, `${name}.css`), result.css);
@@ -64,20 +78,15 @@ function sassPack(opts) {
 			if (opts.m) {
 				return globby(path.join(`${opts.o}`, '*.css'));
 			}
+
 			return null;
 		})
 		.then(paths => {
 			if (!paths) {
 				return;
 			}
-			let obj = {};
 
-			paths.map(file => {
-				obj[path.parse(file).name] = file;
-
-				return obj;
-			});
-			fsp.writeJson(opts.m, obj);
+			return writeManifest(paths);
 		})
 		.catch(err => {
 			throw err;
