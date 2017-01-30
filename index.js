@@ -22,13 +22,6 @@ function sassPack(opts) {
 	const globbyPaths = (opts.s) ? [opts.t, opts.s] : opts.t;
 	let bar = {};
 
-// Make sure our output directory is a thing before we start running stuff
-	fsp.mkdirp(opts.o, err => {
-		if (err) {
-			throw err;
-		}
-	});
-
 	/**
 	 * Compiles Sass down to CSS
 	 * @function compile
@@ -74,7 +67,11 @@ function sassPack(opts) {
 		return fsp.writeJson(opts.m, obj);
 	}
 
-	return globby(globbyPaths)
+	// Make sure our output directory is a thing before we start running stuff
+	return fsp.mkdirp(opts.o)
+		.then(() => {
+			return globby(globbyPaths);
+		})
 		.then(paths => {
 			// We need to Filter out any framework folders that might be lingering
 			const filteredPaths = paths.filter(file => {
@@ -94,7 +91,7 @@ function sassPack(opts) {
 		})
 		.then(data => {
 			// Return a promise array of creating the css files and running our progress bar
-			return Promise.all(data.map(({name, result}) => {
+			return Promise.all(data.map(({ name, result }) => {
 				bar.tick();
 
 				return fsp.writeFile(path.resolve(opts.o, `${name}.css`), result.css);
@@ -125,3 +122,4 @@ if (parsedArgs.o && parsedArgs.t) {
 	sassPack(parsedArgs);
 }
 module.exports = sassPack;
+
