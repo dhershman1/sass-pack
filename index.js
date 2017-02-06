@@ -73,19 +73,15 @@ function sassPack(opts) {
 			return globby(globbyPaths);
 		})
 		.then(paths => {
-			// We need to Filter out any framework folders that might be lingering
-			const filteredPaths = paths.filter(file => {
-				return !file.includes('framework');
-			});
 
 			// Create our progress bar
 			bar = new ProgressBar('Compiling SASS [:bar] :current/:total :elapsed :percent', {
-				total: filteredPaths.length,
+				total: paths.length,
 				width: 20
 			});
 
 			// Return a promise array full of fun compiler promises
-			return Promise.all(filteredPaths.map(file => {
+			return Promise.all(paths.map(file => {
 				return compile(file);
 			}));
 		})
@@ -122,4 +118,3 @@ if (parsedArgs.o && parsedArgs.t) {
 	sassPack(parsedArgs);
 }
 module.exports = sassPack;
-
