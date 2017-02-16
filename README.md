@@ -9,13 +9,17 @@ Install:
 
 
  - `sass-pack [options]` - Run sass-pack using your options
- - `-s` - Set the source path of page based scss
- - `-t` - Set the path to your `theme` scss `Required`
- - `-m`  - Set the path of your `css manifest json`
- - `-o` - Set the path for the output css
+ - `-s --source` - Set the source path of page based scss
+ - `-t --theme` - Set the path to your `theme` scss `Required`
+ - `-m --manifest`  - Set the path of your `css manifest json`
+ - `-o --output` - Set the path for the output css
 
 Example:
 > sass-pack -o public/css -s src/app -t public/scss/themes -m src/config/css_manifest.json
+
+OR
+
+> sass-pack --output public/css --source src/app --theme public/scss/themes --manifest src/config/css_manifest.json
 
 ### API Usage
 
@@ -23,10 +27,10 @@ Sass-Pack can now be used as a simple function call, it will return a promise an
 
 the options are the same as if using the cli
 
-* `t` - Theme path
-* `o` - Output path
-* `m` - Manifest path
-* `s` - Source file paths (page sass)
+* `t, theme` - Theme path
+* `o, output` - Output path
+* `m, manifest` - Manifest path
+* `s, source` - Source file paths (page sass)
 
 Example:
 ```js
@@ -36,6 +40,15 @@ sassPack({
   o: path.join('tests', 'outputs'),
   m: path.join('tests', 'outputs', 'cssmanifest.json'),
   s: path.join('tests', 'srcTest', '*.scss')
+}).then(() => {
+  //Do some things once sass pack is finished
+});
+// You can also use the actual variable names:
+sassPack({
+  theme: path.join('tests', '*.scss'),
+  output: path.join('tests', 'outputs'),
+  manifest: path.join('tests', 'outputs', 'cssmanifest.json'),
+  source: path.join('tests', 'srcTest', '*.scss')
 }).then(() => {
   //Do some things once sass pack is finished
 });
@@ -51,22 +64,35 @@ sassPack({
 
 
 #### Running Tests
- To run the tests install the module, run an `npm i` within sass pack and then `npm test`
+In order to run the tests:
 
-> Changelog v1.1.0
+- Download module
+- `cd` into module
+- Run `npm i`
+- Run `npm test`
+
+#### Changelog
+
+> v1.2.0
+
+> * Changed api vs cli usage check
+> * Better option vars for api use
+> * Added the ability to use full var name in cli with -- style
+
+> v1.1.0
 
 > * Can be used as a function
 > * Added tests
 > * Manifest is now optional
 > * Source files are now optional
 
-> Changelog v1.1.1
+> v1.1.1
 
 > * Optimization improvements
 > * Removed unneeded promise wrapper
 > * Promise now correctly skips steps if no manifest is declared
 
-> Changelog v1.1.2
+> v1.1.2
 
 > * Code Cleanup
 > * Broke functionality out into seperate functions
