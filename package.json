@@ -1,9 +1,10 @@
 {
   "name": "sass-pack",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "description": "Compile Sass down for a cssmanifest",
   "scripts": {
     "clean": "rimraf tests/outputs/*.{css,json}",
+    "pack": "sass-pack --theme tests/default.scss --output tests/outputs --manifest tests/outputs/cssmanifest.json",
     "test": "npm run clean && node tests/tests.js"
   },
   "keywords": [

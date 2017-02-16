@@ -11,15 +11,22 @@ const globby = require('globby');
  * Our main factory function to run sass-pack
  * @module sassPack
  * @param  {Object} opts an object containing our paths
- * @param		{String}	opts.t The Theme string path
- * @param		{String}	opts.o The output string path
- * @param		{String}	opts.s The source file string paths
- * @param		{String}	opts.m The manifest string path
+ * @param		{String}	opts.theme The Theme string path
+ * @param		{String}	opts.output The output string path
+ * @param		{String}	opts.source The source file string paths
+ * @param		{String}	opts.manifest The manifest string path
  * @return {Promise}      Returns the globby promise object
  */
-function sassPack(opts) {
 
-	const globbyPaths = (opts.s) ? [opts.t, opts.s] : opts.t;
+function sassPack(options) {
+
+	const opts = {
+		theme: options.theme || options.t,
+		source: options.source || options.s,
+		manifest: options.manifest || options.m,
+		output: options.output || options.o
+	};
+	const globbyPaths = (opts.source) ? [opts.theme, opts.source] : opts.theme;
 	let bar = {};
 
 	/**
@@ -64,16 +71,15 @@ function sassPack(opts) {
 		});
 
 		// Write our json file
-		return fsp.writeJson(opts.m, obj);
+		return fsp.writeJson(opts.manifest, obj);
 	}
 
 	// Make sure our output directory is a thing before we start running stuff
-	return fsp.mkdirp(opts.o)
+	return fsp.mkdirp(opts.output)
 		.then(() => {
 			return globby(globbyPaths);
 		})
 		.then(paths => {
-
 			// Create our progress bar
 			bar = new ProgressBar('Compiling SASS [:bar] :current/:total :elapsed :percent', {
 				total: paths.length,
@@ -90,13 +96,13 @@ function sassPack(opts) {
 			return Promise.all(data.map(({ name, result }) => {
 				bar.tick();
 
-				return fsp.writeFile(path.resolve(opts.o, `${name}.css`), result.css);
+				return fsp.writeFile(path.resolve(opts.output, `${name}.css`), result.css);
 			}));
 		})
 		.then(() => {
 			// If a manifest path is set then we will need to grab all of the paths in our outputs folder
-			if (opts.m) {
-				return globby(path.join(`${opts.o}`, '*.css'));
+			if (opts.manifest) {
+				return globby(path.join(`${opts.output}`, '*.css'));
 			}
 
 			return false;
@@ -113,8 +119,11 @@ function sassPack(opts) {
 			throw err;
 		});
 }
-// If neither outputs or theme are present in the parsed arguments then we must be getting required somewhere.
-if (parsedArgs.o && parsedArgs.t) {
-	sassPack(parsedArgs);
-}
-module.exports = sassPack;
+
+(function() {
+	if (!module.parent) {
+		sassPack(parsedArgs);
+	}
+
+	module.exports = sassPack;
+}());
