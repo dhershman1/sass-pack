@@ -4,7 +4,6 @@
   "description": "Compile Sass down for a cssmanifest",
   "scripts": {
     "clean": "rimraf tests/outputs/*.{css,json}",
-    "pack": "sass-pack --theme tests/default.scss --output tests/outputs --manifest tests/outputs/cssmanifest.json",
     "test": "npm run clean && node tests/tests.js"
   },
   "keywords": [
@@ -17,6 +16,9 @@
   "repository": {
     "type": "git",
     "url": "https://dhershman@bitbucket.org/dhershman/sasspack.git"
+  },
+  "bugs": {
+    "url": "https://bitbucket.org/dhershman/sasspack/issues"
   },
   "author": "Dustin Hershman",
   "license": "ISC",
