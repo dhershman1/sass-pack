@@ -116,7 +116,7 @@ function sassPack(options) {
 			return false;
 		})
 		.catch(err => {
-			throw err;
+			console.error(err);
 		});
 }
 

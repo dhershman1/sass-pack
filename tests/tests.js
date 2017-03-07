@@ -8,7 +8,6 @@ const themePath = path.join('tests', '*.scss');
 const manifestPath = path.join(outputPath, 'cssmanifest.json');
 
 test('Test Compile Without Manifest', function (t) {
-	t.plan(2);
 	sassPack({
 		t: themePath,
 		o: outputPath
@@ -22,20 +21,17 @@ test('Test Compile Without Manifest', function (t) {
 			fs.readFile(path.join(outputPath, files[files.indexOf('default.css')]), {
 				encoding: 'utf8'
 			}, (readErr, data) => {
-				if (readErr) {
-					throw err;
-				}
 				t.ok(data.includes('body .test_class'), 'Contains compiled CSS');
+				t.end(readErr);
 			});
 		});
 	})
 		.catch(err => {
-			throw err;
+			t.end(err);
 		});
 });
 
 test('Test Compile With Manifest', function (t) {
-	t.plan(3);
 	sassPack({
 		t: themePath,
 		o: outputPath,
@@ -50,19 +46,16 @@ test('Test Compile With Manifest', function (t) {
 			fs.readFile(path.join(outputPath, 'cssmanifest.json'), {
 				encoding: 'utf8'
 			}, (readErr, data) => {
-				if (readErr) {
-					throw err;
-				}
 				let results = JSON.parse(data);
 
 				t.ok(results.default, 'Manifest contains path to default theme');
+				t.end(readErr);
 			});
 		});
 	});
 });
 
 test('Test Compile With Source Sass', function (t) {
-	t.plan(5);
 	sassPack({
 		t: themePath,
 		o: outputPath,
@@ -80,13 +73,11 @@ test('Test Compile With Source Sass', function (t) {
 			fs.readFile(path.join(outputPath, files[0]), {
 				encoding: 'utf8'
 			}, (readErr, data) => {
-				if (readErr) {
-					throw err;
-				}
 				let results = JSON.parse(data);
 
 				t.ok(results.default, 'Manifest contains path to default theme');
 				t.ok(results.test_home, 'Manifest contains path to source css');
+				t.end(readErr);
 			});
 		});
 	});
