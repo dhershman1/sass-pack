@@ -1,10 +1,8 @@
 #! /usr/bin/env node
-
 const fsp = require('fs-promise');
 const sass = require('node-sass');
 const path = require('path');
 const parsedArgs = require('minimist')(process.argv.slice(2));
-const ProgressBar = require('progress');
 const globby = require('globby');
 
 /**
@@ -27,7 +25,6 @@ function sassPack(options) {
 		output: options.output || options.o
 	};
 	const globbyPaths = (opts.source) ? [opts.theme, opts.source] : opts.theme;
-	let bar = {};
 
 	/**
 	 * Compiles Sass down to CSS
@@ -69,8 +66,8 @@ function sassPack(options) {
 
 			return obj;
 		});
-
 		// Write our json file
+
 		return fsp.writeJson(opts.manifest, obj);
 	}
 
@@ -80,11 +77,6 @@ function sassPack(options) {
 			return globby(globbyPaths);
 		})
 		.then(paths => {
-			// Create our progress bar
-			bar = new ProgressBar('Compiling SASS [:bar] :current/:total :elapsed :percent', {
-				total: paths.length,
-				width: 20
-			});
 
 			// Return a promise array full of fun compiler promises
 			return Promise.all(paths.map(file => {
@@ -92,9 +84,8 @@ function sassPack(options) {
 			}));
 		})
 		.then(data => {
-			// Return a promise array of creating the css files and running our progress bar
+			// Return a promise array of creating the css files
 			return Promise.all(data.map(({ name, result }) => {
-				bar.tick();
 
 				return fsp.writeFile(path.resolve(opts.output, `${name}.css`), result.css);
 			}));

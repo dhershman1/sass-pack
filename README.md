@@ -7,7 +7,6 @@ Install:
 
 ### CLI Usage
 
-
  - `sass-pack [options]` - Run sass-pack using your options
  - `-s --source` - Set the source path of page based scss
  - `-t --theme` - Set the path to your `theme` scss `Required`
@@ -54,17 +53,7 @@ sassPack({
 });
 ```
 
-### Requirements
-
- - `node-sass` - the node scss compiler library
- - `minimist` - module to setup cli support
- - `fs-promise` - module to use promises with the file system library, also include `fs-extra`
- - `globby` - module to allow us to use promise based globs
- - `progress` - module to keep track of progress in our terminal
-
-
-#### Running Tests
-In order to run the tests:
+#### Testing
 
 - Download module
 - `cd` into module
@@ -72,6 +61,12 @@ In order to run the tests:
 - Run `npm test`
 
 #### Changelog
+
+> 1.3.0
+
+> * Removed Progress module
+> * Code cleanup
+> * Performance improvements
 
 > v1.2.0
 
