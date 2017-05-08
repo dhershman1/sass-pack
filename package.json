@@ -4,7 +4,8 @@
   "description": "Compile Sass down for a cssmanifest",
   "scripts": {
     "clean": "rimraf tests/outputs/*.{css,json}",
-    "test": "npm run clean && node tests/tests.js | tap-spec"
+    "test": "npm run clean && node tests/tests.js | tap-spec",
+		"compile": "sass-pack -o 'tests/outputs/css' -t 'tests/default.scss' -s 'tests/srcTest/test_home.sass'"
   },
   "keywords": [
     "sass",
