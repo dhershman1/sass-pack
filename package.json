@@ -23,7 +23,6 @@
   },
   "author": "Dustin Hershman",
   "license": "ISC",
-  "preferGlobal": true,
   "bin": {
     "sass-pack": "./index.js"
   },
