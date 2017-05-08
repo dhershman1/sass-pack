@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/dhershman1/sass-pack.svg?branch=master)](https://travis-ci.org/dhershman1/sass-pack)
 # Sass-Pack
 
 A simple CLI system for compiling sass down to css. Runs async, optionally builds a css manifest.
