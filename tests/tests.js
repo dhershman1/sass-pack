@@ -70,7 +70,7 @@ test('Test Compile With Source Sass', function (t) {
 			t.ok(files.includes('default.css'), 'Default CSS Created');
 			t.ok(files.includes('test_home.css'), 'Source CSS Created');
 			t.ok(files.includes('cssmanifest.json'), 'Manifest Created');
-			fs.readFile(path.join(outputPath, files[0]), {
+			fs.readFile(path.join(outputPath, files[1]), {
 				encoding: 'utf8'
 			}, (readErr, data) => {
 				let results = JSON.parse(data);
