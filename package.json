@@ -32,9 +32,9 @@
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "node-sass": "^3.10.0",
-    "fs-promise": "^1.0.0",
-    "globby": "^6.1.0",
-    "minimist": "^1.2.0"
+    "node-sass": "4.5.2",
+    "fs-extra": "3.0.1",
+    "globby": "6.1.0",
+    "minimist": "1.2.0"
   }
 }

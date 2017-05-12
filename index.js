@@ -1,5 +1,5 @@
 #! /usr/bin/env node
-const fsp = require('fs-promise');
+const fsa = require('fs-extra');
 const sass = require('node-sass');
 const path = require('path');
 const parsedArgs = require('minimist')(process.argv.slice(2));
@@ -55,7 +55,7 @@ function sassPack(options) {
 	 * Write our manifest json file to our manifest path.
 	 * @function writeManifest
 	 * @param  {Array} paths An array of paths we need to write into our manifest
-	 * @return {Promise}      Returns the promise set by the fsp.writeJson method
+	 * @return {Promise}      Returns the promise set by the fsa.writeJson method
 	 */
 	function writeManifest(paths) {
 		let obj = {};
@@ -68,11 +68,11 @@ function sassPack(options) {
 		});
 		// Write our json file
 
-		return fsp.writeJson(opts.manifest, obj);
+		return fsa.writeJson(opts.manifest, obj);
 	}
 
 	// Make sure our output directory is a thing before we start running stuff
-	return fsp.mkdirp(opts.output)
+	return fsa.mkdirp(opts.output)
 		.then(() => {
 			return globby(globbyPaths);
 		})
@@ -87,7 +87,7 @@ function sassPack(options) {
 			// Return a promise array of creating the css files
 			return Promise.all(data.map(({ name, result }) => {
 
-				return fsp.writeFile(path.resolve(opts.output, `${name}.css`), result.css);
+				return fsa.writeFile(path.resolve(opts.output, `${name}.css`), result.css);
 			}));
 		})
 		.then(() => {
