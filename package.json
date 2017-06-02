@@ -1,25 +1,30 @@
 {
   "name": "sass-pack",
-  "version": "1.3.1",
-  "description": "Compile Sass down for a cssmanifest",
+  "version": "1.4.0",
+  "description": "A simple sass compiler/minifier CLI tool with optional manifest options",
   "scripts": {
-    "clean": "rimraf tests/outputs/*.{css,json}",
+    "clean": "rimraf tests/outputs/*.{css,json,map}",
     "test": "npm run clean && node tests/tests.js | tap-spec",
-		"compile": "sass-pack -o 'tests/outputs/css' -t 'tests/default.scss' -s 'tests/srcTest/test_home.scss'"
+    "compile": "sass-pack -o 'tests/outputs' -t 'tests/default.scss' -s 'tests/srcTest/test_home.scss'",
+		"compile:maps": "sass-pack -o 'tests/outputs' -t 'tests/bootstrap.scss' -n compressed -x 'tests/outputs'"
   },
   "keywords": [
     "sass",
     "pack",
     "precompiler",
     "node-sass",
-    "css"
+    "css",
+		"clean css",
+		"fast",
+		"manifest",
+		"scss"
   ],
   "repository": {
     "type": "git",
-    "url": "https://dhershman@bitbucket.org/dhershman/sasspack.git"
+    "url": "https://github.com/dhershman1/sass-pack.git"
   },
   "bugs": {
-    "url": "https://bitbucket.org/dhershman/sasspack/issues"
+    "url": "https://github.com/dhershman1/sass-pack/issues"
   },
   "author": "Dustin Hershman",
   "license": "ISC",
@@ -32,9 +37,9 @@
     "tape": "^4.6.3"
   },
   "dependencies": {
-    "node-sass": "4.5.2",
     "fs-extra": "3.0.1",
     "globby": "6.1.0",
-    "minimist": "1.2.0"
+    "minimist": "1.2.0",
+    "node-sass": "4.5.2"
   }
 }

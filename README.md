@@ -14,10 +14,13 @@ You can view the changelog here: https://github.com/dhershman1/sass-pack/blob/ma
 ### CLI Usage
 
  - `sass-pack [options]` - Run sass-pack using your options
- - `-s --source` - Set the source path of page based scss
- - `-t --theme` - Set the path to your `theme` scss `Required`
- - `-m --manifest`  - Set the path of your `css manifest json`
- - `-o --output` - Set the path for the output css
+ - `-s --source <path>` - Set the source path of page based scss (If you have floating sass files with your pages) - `optional`
+ - `-t --theme <path>` - Set the path to your `theme` scss - `Required`
+ - `-m --manifest <path>`  - Set the path of your `css manifest json` - `optional` default: `/`
+ - `-o --output <path>` - Set the path for the output css - `optional` default: `/`
+ - `-n --minify <minifyType>` - Set the style of minifying can be `nested`, `expanded`, `compact`, or `compressed` - `optional` default: `nested`
+ - `-e --error` - Tell Sass pack if you want to terminate the process when there is sass errors (undefined variables, bad properties, etc.) - `optional` default: `false`
+ - `-x --sourcemaps <path>` - Tell sass pack if you want to generate sourcemaps as well - `optional` default: `false`
 
 Example:
 > sass-pack -o public/css -s src/app -t public/scss/themes -m src/config/css_manifest.json
@@ -36,6 +39,9 @@ the options are the same as if using the cli
 * `o, output` - Output path
 * `m, manifest` - Manifest path
 * `s, source` - Source file paths (page sass)
+* `n, minify` - minify type
+* `e, error` - kill process
+* `x, sourcemaps` - path to sourcemaps
 
 Example:
 ```js

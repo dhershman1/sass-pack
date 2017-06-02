@@ -1,3 +1,13 @@
+# v1.4.0
+
+> * Added the ability to have sass-pack minify css for you through `node-sass`
+>   * Use either `-n <minifyType>` or `--minify <minifyType>` in your command
+> * Removed process exit on a compile error, running like the library should run
+> * Added the ability to have sass-pack create source maps for the css
+>   * Use eitehr `-x <path>` or `--sourcemaps <path>` in your command
+> * Some general code cleanup
+> * Switched the public repo over to github
+
 # v1.3.1
 
 > * Now exists with code 1 if sass fails to compile

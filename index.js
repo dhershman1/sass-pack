@@ -5,6 +5,18 @@ const path = require('path');
 const parsedArgs = require('minimist')(process.argv.slice(2));
 const globby = require('globby');
 
+function normalizeOpts(options) {
+	return {
+		theme: options.theme || options.t,
+		source: options.source || options.s,
+		manifest: options.manifest || options.m,
+		output: options.output || options.o,
+		minify: options.minify || options.n,
+		hardQuit: options.error || options.e,
+		sourceMaps: options.sourcemaps || options.x
+	};
+}
+
 /**
  * Our main factory function to run sass-pack
  * @module sassPack
@@ -13,17 +25,14 @@ const globby = require('globby');
  * @param		{String}	opts.output The output string path
  * @param		{String}	opts.source The source file string paths
  * @param		{String}	opts.manifest The manifest string path
+ * @param		{String}	opts.minify The level of minify to use (defaults to none)
+ * @param		{String}	opts.sourceMaps Boolean to determine if source maps should be created
  * @return {Promise}      Returns the globby promise object
  */
 
 function sassPack(options) {
 
-	const opts = {
-		theme: options.theme || options.t,
-		source: options.source || options.s,
-		manifest: options.manifest || options.m,
-		output: options.output || options.o
-	};
+	const opts = normalizeOpts(options) || normalizeOpts(parsedArgs);
 	const globbyPaths = (opts.source) ? [opts.theme, opts.source] : opts.theme;
 
 	/**
@@ -33,19 +42,24 @@ function sassPack(options) {
 	 * @return {Promise}      Returns a promise object back to our chain
 	 */
 	function compile(file) {
-
 		return new Promise((resolve, reject) => {
 			let name = path.parse(file).name;
 
 			sass.render({
-				file: file
+				file: file,
+				outFile: opts.output,
+				outputStyle: opts.minify || 'nested',
+				sourceMap: opts.sourceMaps
 			}, (compileErr, result) => {
 				if (compileErr) {
-					reject(compileErr);
+					return reject(compileErr);
 				}
-				resolve({
+
+				return resolve({
 					name,
-					result
+					ext: (opts.minify === 'compressed') ? 'min.css' : 'css',
+					css: result.css,
+					map: result.map
 				});
 			});
 		});
@@ -85,9 +99,12 @@ function sassPack(options) {
 		})
 		.then(data => {
 			// Return a promise array of creating the css files
-			return Promise.all(data.map(({ name, result }) => {
+			return Promise.all(data.map((results) => {
+				if (opts.sourceMaps) {
+					fsa.writeFile(path.resolve(opts.output, `${results.name}.map`), results.map);
+				}
 
-				return fsa.writeFile(path.resolve(opts.output, `${name}.css`), result.css);
+				return fsa.writeFile(path.resolve(opts.output, `${results.name}.${results.ext}`), results.css);
 			}));
 		})
 		.then(() => {
@@ -108,7 +125,6 @@ function sassPack(options) {
 		})
 		.catch(err => {
 			console.error(err);
-			process.exit(1);
 		});
 }
 

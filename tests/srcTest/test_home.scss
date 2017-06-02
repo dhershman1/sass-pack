@@ -1,5 +1,7 @@
+@import '../imports/variables';
+
 p {
-  color: #000;
+  color: $testRed;
   span {
     background-color: #AAA;
   }
