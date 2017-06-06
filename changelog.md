@@ -1,3 +1,8 @@
+# v1.4.1
+
+> * Fixed source maps showing up in manifests
+> * Fixed manifest saving with .min in name
+
 # v1.4.0
 
 > * Added the ability to have sass-pack minify css for you through `node-sass`

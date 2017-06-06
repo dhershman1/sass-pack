@@ -76,7 +76,11 @@ function sassPack(options) {
 
 		// Map our files to an object we can set in our json manifest
 		paths.map(file => {
-			obj[path.parse(file).name] = file;
+			const parsedPath = path.parse(file);
+
+			if (parsedPath.ext !== '.map') {
+				obj[parsedPath.name.replace('.min', '')] = file;
+			}
 
 			return obj;
 		});
