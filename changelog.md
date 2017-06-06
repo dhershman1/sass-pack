@@ -1,7 +1,11 @@
-# v1.4.1
+# v1.4.2
 
 > * Fixed source maps showing up in manifests
 > * Fixed manifest saving with .min in name
+
+# v1.4.1
+
+> * Code Cleanup
 
 # v1.4.0
 
