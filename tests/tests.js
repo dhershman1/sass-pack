@@ -10,8 +10,8 @@ const manifestPath = path.join(outputPath, 'cssmanifest.json');
 
 test('Test Compile Without Manifest', t => {
 	sassPack({
-		t: themePath,
-		o: outputPath,
+		source: themePath,
+		output: outputPath,
 		minify: 0
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
@@ -35,9 +35,9 @@ test('Test Compile Without Manifest', t => {
 
 test('Test Compile With Manifest', t => {
 	sassPack({
-		t: themePath,
-		o: outputPath,
-		m: manifestPath,
+		source: themePath,
+		output: outputPath,
+		manifest: manifestPath,
 		minify: 0
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
@@ -58,12 +58,11 @@ test('Test Compile With Manifest', t => {
 	});
 });
 
-test('Test Compile With Source Sass', t => {
+test('Test Compile With multi paths', t => {
 	sassPack({
-		t: themePath,
-		o: outputPath,
-		m: manifestPath,
-		s: path.join('tests', 'srcTest', '*.scss'),
+		source: `${themePath},${path.join('tests', 'srcTest', '*.scss')}`,
+		output: outputPath,
+		manifest: manifestPath,
 		minify: 0
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
@@ -89,7 +88,7 @@ test('Test Compile With Source Sass', t => {
 
 test('Test Compile bootstrap and minify', t => {
 	sassPack({
-		theme: bsTheme,
+		source: bsTheme,
 		output: outputPath,
 		manifest: manifestPath,
 		minify: 'compressed'
@@ -115,7 +114,7 @@ test('Test Compile bootstrap and minify', t => {
 
 test('Test Compile bootstrap minify & sourcemap', t => {
 	sassPack({
-		theme: themePath,
+		source: themePath,
 		output: outputPath,
 		manifest: manifestPath,
 		minify: 'compressed',

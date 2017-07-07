@@ -13,7 +13,7 @@ module.exports = {
 		// Possible Errors
 		'no-await-in-loop': 'error',
 		'no-cond-assign': ['error', 'always'],
-		'no-console': 'warn',
+		'no-console': 'off',
 		'no-constant-condition': 'error',
 		'no-control-regex': 'error',
 		'no-debugger': 'error',
@@ -52,7 +52,7 @@ module.exports = {
 		'block-scoped-var': 'error',
 		'class-methods-use-this': 'error',
 		'complexity': ['error', {
-			'max': 3
+			'max': 5
 		}],
 		'consistent-return': 'error',
 		'curly': ['error', 'multi-line'],
