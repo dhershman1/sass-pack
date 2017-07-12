@@ -1,6 +1,6 @@
 {
   "name": "sass-pack",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "A simple sass compiler/minifier CLI tool with optional manifest options",
   "scripts": {
     "clean": "rimraf tests/outputs/*.{css,json,map}",
@@ -41,6 +41,6 @@
     "fs-extra": "3.0.1",
     "globby": "6.1.0",
     "meow": "^3.7.0",
-    "node-sass": "4.5.2"
+    "node-sass": "4.5.3"
   }
 }

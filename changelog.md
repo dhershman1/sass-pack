@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.5.1
+
+> * Updated `node-sass` to `4.5.3` for Node 8 support
+
 ## v1.5.0
 
 > * Code clean up and optimizations
