@@ -22,6 +22,7 @@ You can view the changelog here: https://github.com/dhershman1/sass-pack/blob/ma
  - `-n --minify <minifyType>` - Set the style of minifying can be `nested`, `expanded`, `compact`, or `compressed` - `optional` default: `nested`
  - `-x --sourcemaps <path>` - Tell sass pack if you want to generate sourcemaps as well - `optional` default: `false`
  - `-q --hardquit` - Add this tag if when sass-pack runs into a Sass syntax error you would like it to hard quit the process, if you're using a watch tool you can leave this off and sass-pack will await changes and try again.
+ - `-a --alias <path>` - The path to replace the alias with
 
 Example:
 > sass-pack -o public/css -s src/app,public/scss/themes -m src/config/css_manifest.json
@@ -41,9 +42,10 @@ The options are the same as if using the cli to send a list of paths when using 
 * `source` - Source file paths (page sass)
 * `output` - Output path
 * `manifest` - Manifest path
-* `minify` - minify type
-* `hardquit` - kill process if `reject` is triggered
-* `sourcemaps` - path to sourcemaps
+* `minify` - Minify type
+* `hardquit` - Kill process if `reject` is triggered
+* `sourcemaps` - Path to sourcemaps
+* `alias` - Path to replace alias with
 
 Example:
 ```js
@@ -67,3 +69,35 @@ OR
 > sass-pack --output=public/css --source=src/app,public/scss/themes --manifest=src/config/css_manifest.json --hardquit
 
 If using the `API` just add `hardquit: true` to your options object
+
+## Using Alias
+
+Alias adds the ability to shorten common paths down so you can have a cleaner import setup in your sass I added this because sass doesn't seem to support dynamic import support like LESS.
+
+So assuming my `test_home.scss` lived two dirs above my importer I'd have this:
+
+```scss
+@import '../../test_home.scss';
+
+a {
+	margin: 1rem;
+	.testing {
+		font-weight: 400;
+	}
+}
+
+```
+But if I set my alias to `-a tests/srcTest/` and then change the import to: `@import @/test_home.scss` sass-pack will auto convert the alias before compiling down to css
+
+you would do the same thing in the API
+```js
+const sassPack = require('sass-pack');
+sassPack({
+  source: [path.join('tests', '*.scss'), path.join('tests', 'srcTest', '*.scss')],
+  output: path.join('tests', 'outputs'),
+  manifest: path.join('tests', 'outputs', 'cssmanifest.json'),
+  alias: 'my/alias/path'
+}).then(() => {
+  //Do some things once sass pack is finished
+});
+```
