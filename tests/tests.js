@@ -6,13 +6,13 @@ const path = require('path');
 const outputPath = path.join('tests', 'outputs');
 const themePath = path.join('tests', 'default.scss');
 const bsTheme = path.join('tests', 'bootstrap.scss');
+const aliasTheme = path.join('tests', 'test.scss');
 const manifestPath = path.join(outputPath, 'cssmanifest.json');
 
 test('Test Compile Without Manifest', t => {
 	sassPack({
 		source: themePath,
-		output: outputPath,
-		minify: 0
+		output: outputPath
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
 			if (err) {
@@ -37,8 +37,7 @@ test('Test Compile With Manifest', t => {
 	sassPack({
 		source: themePath,
 		output: outputPath,
-		manifest: manifestPath,
-		minify: 0
+		manifest: manifestPath
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
 			if (err) {
@@ -49,7 +48,7 @@ test('Test Compile With Manifest', t => {
 			fs.readFile(manifestPath, {
 				encoding: 'utf8'
 			}, (readErr, data) => {
-				let results = JSON.parse(data);
+				const results = JSON.parse(data);
 
 				t.ok(results.default, 'Manifest contains path to default theme');
 				t.end(readErr);
@@ -60,10 +59,9 @@ test('Test Compile With Manifest', t => {
 
 test('Test Compile With multi paths', t => {
 	sassPack({
-		source: `${themePath},${path.join('tests', 'srcTest', '*.scss')}`,
+		source: `${themePath},${bsTheme}`,
 		output: outputPath,
-		manifest: manifestPath,
-		minify: 0
+		manifest: manifestPath
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
 			if (err) {
@@ -71,15 +69,14 @@ test('Test Compile With multi paths', t => {
 			}
 
 			t.ok(files.includes('default.css'), 'Default CSS Created');
-			t.ok(files.includes('test_home.css'), 'Source CSS Created');
 			t.ok(files.includes('cssmanifest.json'), 'Manifest Created');
 			fs.readFile(manifestPath, {
 				encoding: 'utf8'
 			}, (readErr, data) => {
-				let results = JSON.parse(data);
+				const results = JSON.parse(data);
 
 				t.ok(results.default, 'Manifest contains path to default theme');
-				t.ok(results.test_home, 'Manifest contains path to source css');
+				t.ok(results.bootstrap, 'Manifest contains path to bootstrap theme');
 				t.end(readErr);
 			});
 		});
@@ -102,17 +99,16 @@ test('Test Compile bootstrap and minify', t => {
 			fs.readFile(manifestPath, {
 				encoding: 'utf8'
 			}, (readErr, data) => {
-				let results = JSON.parse(data);
+				const results = JSON.parse(data);
 
-				t.ok(results.default, 'Manifest contains path to default theme');
-				t.ok(results.test_home, 'Manifest contains path to source css');
+				t.ok(results.bootstrap, 'Manifest contains path to bootstrap css');
 				t.end(readErr);
 			});
 		});
 	});
 });
 
-test('Test Compile bootstrap minify & sourcemap', t => {
+test('Test Compile default theme minify & sourcemap', t => {
 	sassPack({
 		source: themePath,
 		output: outputPath,
@@ -129,12 +125,28 @@ test('Test Compile bootstrap minify & sourcemap', t => {
 			fs.readFile(manifestPath, {
 				encoding: 'utf8'
 			}, (readErr, data) => {
-				let results = JSON.parse(data);
+				const results = JSON.parse(data);
 
 				t.ok(results.default, 'Manifest contains path to default theme');
-				t.ok(results.test_home, 'Manifest contains path to source css');
 				t.end(readErr);
 			});
+		});
+	});
+});
+
+test('Test alias pathing replacement', t => {
+	sassPack({
+		source: aliasTheme,
+		output: outputPath,
+		minify: 'compressed',
+		alias: 'tests/srcTest/'
+	}).then(() => {
+		fs.readdir(outputPath, (err, files) => {
+			if (err) {
+				throw err;
+			}
+			t.ok(files.includes('test.min.css'), 'Bootstrap CSS Created');
+			t.end();
 		});
 	});
 });

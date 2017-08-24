@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.6.0
+
+> * Added Alias Support for paths since sass does not have dynamic import support
+>   * Use the `@` sign at the start of your path
+>   * You can use `-a` or `--alias` to set the alias path\
+> * Added `-a` and `--alias` options to cli to support this
+> * With how new this feature is please report any and everything to issues when you find it
+
 ## v1.5.1
 
 > * Updated `node-sass` to `4.5.3` for Node 8 support

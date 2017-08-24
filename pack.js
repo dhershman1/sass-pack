@@ -27,7 +27,7 @@ const compatability = options => {
  * @return {Promise}      Returns the globby promise object
  */
 
-export default options => {
+module.exports = options => {
 
 	// Run compatability in case someone upgraded without swapping out their theme options
 	const opts = compatability(options);
@@ -38,7 +38,13 @@ export default options => {
 	}
 
 	const mapAlias = file => new Promise((resolve, reject) => {
+		fsa.readFile(file, 'utf8', (err, data) => {
+			if (err) {
+				return reject(err);
+			}
 
+			return resolve(data.replace(/@\//g, opts.alias));
+		});
 	});
 
 	/**
@@ -49,14 +55,20 @@ export default options => {
 	 */
 	const compile = file => new Promise((resolve, reject) => {
 		const {name} = path.parse(file);
+		const sassObj = {
+			outFile: opts.output,
+			outputStyle: opts.minify || 'nested',
+			sourceMap: opts.sourcemaps
+		};
 
 		mapAlias(file).then(sassData => {
-			sass.render({
-				data: sassData,
-				outFile: opts.output,
-				outputStyle: opts.minify || 'nested',
-				sourceMap: opts.sourcemaps
-			}, (compileErr, result) => {
+			if (opts.alias) {
+				sassObj.data = sassData;
+			} else {
+				sassObj.file = file;
+			}
+
+			sass.render(sassObj, (compileErr, result) => {
 				if (compileErr) {
 					return reject(compileErr);
 				}

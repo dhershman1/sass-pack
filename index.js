@@ -19,26 +19,26 @@ const cli = require('meow')(`
 			$ sass-pack --output=dist/css --source=src/sass/*.scss
 			$ sass-pack -o dist/css -s src/sass/*.scss
 `, {
-	alias: {
-		h: 'help',
-		v: 'version',
-		t: 'theme',
-		s: 'source',
-		m: 'manifest',
-		o: 'output',
-		q: 'hardquit',
-		x: 'sourcemaps',
-		n: 'minify',
-		a: 'alias'
-	},
-	boolean: ['hardquit'],
-	default: {
-		hardquit: false,
-		minify: 'nested'
-	}
-});
+		alias: {
+			h: 'help',
+			v: 'version',
+			t: 'theme',
+			s: 'source',
+			m: 'manifest',
+			o: 'output',
+			q: 'hardquit',
+			x: 'sourcemaps',
+			n: 'minify',
+			a: 'alias'
+		},
+		boolean: ['hardquit'],
+		default: {
+			hardquit: false,
+			minify: 'nested'
+		}
+	});
 
-(function() {
+(function moduleCheck() {
 	if (require.main === module) {
 		sassPack(cli.flags);
 	}

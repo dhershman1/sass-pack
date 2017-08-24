@@ -1,13 +1,14 @@
 {
   "name": "sass-pack",
-  "version": "1.5.1",
+  "version": "1.6.0",
   "description": "A simple sass compiler/minifier CLI tool with optional manifest options",
   "scripts": {
     "clean": "rimraf tests/outputs/*.{css,json,map}",
     "test": "npm run clean && node tests/tests.js | tap-spec",
-    "compile": "sass-pack -o 'tests/outputs' -t 'tests/default.scss' -s 'tests/srcTest/test_home.scss'",
-    "compile:maps": "sass-pack -o 'tests/outputs' -t 'tests/bootstrap.scss' -n compressed -x 'tests/outputs'",
-    "compile:help": "sass-pack -h"
+    "compile": "sass-pack -o tests/outputs -s tests/default.scss",
+    "compile:maps": "sass-pack -o tests/outputs -t tests/bootstrap.scss -n compressed -x tests/outputs",
+    "compile:help": "sass-pack -h",
+    "compile:alias": "sass-pack -o tests/outputs -s tests/test.scss -a tests/srcTest/"
   },
   "keywords": [
     "sass",
