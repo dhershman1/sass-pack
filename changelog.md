@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.6.2
+
+> * Switched to using `LibSass` Importer function for more stable support
+> * Should fix the issue of aliased imports failing on importing other aliased imports
+> * Improved performance
+
 ## v1.6.1
 
 > * Code Cleanup in functions
