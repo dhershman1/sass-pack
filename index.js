@@ -13,6 +13,7 @@ const cli = require('meow')(`
 			-o, --output [path]   the output path for your css
 			-x, --sourcempas [path]  set the path to generate sourcemaps to
 			-n, --minify [option]    level of minification to apply
+			-a, --alias [option]    the alias to use while looking for imports
 
 		Examples
 			$ sass-pack --output=dist/css --source=src/sass/*.scss
@@ -27,7 +28,8 @@ const cli = require('meow')(`
 		o: 'output',
 		q: 'hardquit',
 		x: 'sourcemaps',
-		n: 'minify'
+		n: 'minify',
+		a: 'alias'
 	},
 	boolean: ['hardquit'],
 	default: {
