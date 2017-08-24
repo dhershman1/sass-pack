@@ -139,7 +139,7 @@ test('Test alias pathing replacement', t => {
 		source: aliasTheme,
 		output: outputPath,
 		minify: 'compressed',
-		alias: 'tests/srcTest/'
+		alias: 'tests/'
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
 			if (err) {

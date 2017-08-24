@@ -10,7 +10,7 @@
     "compile:manifest": "sass-pack -o tests/outputs -s tests/default.scss -m tests/outputs/manifest.json",
     "compile:maps": "sass-pack -o tests/outputs -t tests/bootstrap.scss -n compressed -x tests/outputs",
     "compile:help": "sass-pack -h",
-    "compile:alias": "sass-pack -o tests/outputs -s tests/test.scss -a tests/srcTest/"
+    "compile:alias": "sass-pack -o tests/outputs -s tests/test.scss --alias=tests/"
   },
   "keywords": [
     "sass",

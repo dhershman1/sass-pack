@@ -38,22 +38,6 @@ module.exports = options => {
 	}
 
 	/**
-	 * Sift through and map out to replace alias with path strings
-	 * @function mapAlias
-	 * @param  {String} file the path to the file to read
-	 * @return {String} returns the file data with the replaced alias
-	 */
-	const mapAlias = file => new Promise((resolve, reject) => {
-		fsa.readFile(file, 'utf8', (err, data) => {
-			if (err) {
-				return reject(err);
-			}
-
-			return resolve(data.replace(/@\//g, opts.alias));
-		});
-	});
-
-	/**
 	 * Compiles Sass down to CSS
 	 * @function compile
 	 * @param  {String} file String path of our sass file
@@ -61,31 +45,45 @@ module.exports = options => {
 	 */
 	const compile = file => new Promise((resolve, reject) => {
 		const {name, dir} = path.parse(file);
-		const sassObj = {
+
+		sass.render({
+			file,
+			importer: (url, prev, done) => {
+				if (url.includes('@/')) {
+					let fixedUrl = url.replace(/@\//g, opts.alias);
+					const importName = path.parse(fixedUrl).name;
+
+					if (!fixedUrl.includes('.scss')) {
+						fixedUrl = fixedUrl.replace(importName, `${importName}.scss`);
+					}
+					fsa.readFile(fixedUrl, 'utf8', (err, data) => {
+						if (err) {
+							return reject(err);
+						}
+
+						return done({
+							file: fixedUrl,
+							contents: data
+						});
+					});
+				} else {
+					done();
+				}
+			},
 			outFile: opts.output,
+			includePaths: [dir],
 			outputStyle: opts.minify || 'nested',
 			sourceMap: opts.sourcemaps
-		};
-
-		mapAlias(file).then(sassData => {
-			if (opts.alias) {
-				sassObj.data = sassData;
-				sassObj.includePaths = [dir];
-			} else {
-				sassObj.file = file;
+		}, (compileErr, result) => {
+			if (compileErr) {
+				return reject(compileErr);
 			}
 
-			sass.render(sassObj, (compileErr, result) => {
-				if (compileErr) {
-					return reject(compileErr);
-				}
-
-				return resolve({
-					name,
-					ext: opts.minify === 'compressed' ? 'min.css' : 'css',
-					css: result.css,
-					map: result.map
-				});
+			return resolve({
+				name,
+				ext: opts.minify === 'compressed' ? 'min.css' : 'css',
+				css: result.css,
+				map: result.map
 			});
 		});
 	});
