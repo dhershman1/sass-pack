@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.6.1
+
+> * Code Cleanup in functions
+> * Cleaned up the promise chain a bit
+> * README tweaks
+> * Fixed losing working directory if using alias imports that don't use alias should still be working now
+> * Better Manifest building in promise chain
+
 ## v1.6.0
 
 > * Added Alias Support for paths since sass does not have dynamic import support

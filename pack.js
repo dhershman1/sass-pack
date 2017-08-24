@@ -37,6 +37,12 @@ module.exports = options => {
 		opts.source = opts.source.split(',');
 	}
 
+	/**
+	 * Sift through and map out to replace alias with path strings
+	 * @function mapAlias
+	 * @param  {String} file the path to the file to read
+	 * @return {String} returns the file data with the replaced alias
+	 */
 	const mapAlias = file => new Promise((resolve, reject) => {
 		fsa.readFile(file, 'utf8', (err, data) => {
 			if (err) {
@@ -54,7 +60,7 @@ module.exports = options => {
 	 * @return {Promise}      Returns a promise object back to our chain
 	 */
 	const compile = file => new Promise((resolve, reject) => {
-		const {name} = path.parse(file);
+		const {name, dir} = path.parse(file);
 		const sassObj = {
 			outFile: opts.output,
 			outputStyle: opts.minify || 'nested',
@@ -64,6 +70,7 @@ module.exports = options => {
 		mapAlias(file).then(sassData => {
 			if (opts.alias) {
 				sassObj.data = sassData;
+				sassObj.includePaths = [dir];
 			} else {
 				sassObj.file = file;
 			}
@@ -89,32 +96,29 @@ module.exports = options => {
 	 * @param  {Array} paths An array of paths we need to write into our manifest
 	 * @return {Promise}      Returns the promise set by the fsa.writeJson method
 	 */
-	const writeManifest = paths => {
-		if (!paths) {
-			return false;
-		}
+	const writeManifest = () => globby(path.join(opts.output, '*.css'))
+		.then(cssPaths => {
+			// Map our files to an object we can set in our json manifest
+			const manifestJSON = cssPaths.reduce((acc, file) => {
+				const {ext, name} = path.parse(file);
 
-		const obj = {};
+				if (ext !== '.map') {
+					acc[name.replace('.min', '')] = file;
+				}
 
-		// Map our files to an object we can set in our json manifest
-		paths.map(file => {
-			const parsedPath = path.parse(file);
+				return acc;
+			}, {});
 
-			if (parsedPath.ext !== '.map') {
-				obj[parsedPath.name.replace('.min', '')] = file;
-			}
-
-			return obj;
+			return fsa.writeJson(opts.manifest, manifestJSON);
 		});
-
-		// Write our json file
-		return fsa.writeJson(opts.manifest, obj);
-	};
 
 	// Make sure our output directory is a thing before we start running stuff
 	return fsa.mkdirp(opts.output)
+		// Then grab all of our sass file paths
 		.then(() => globby(opts.source))
+		// Then compile all of these down to css
 		.then(paths => Promise.all(paths.map(file => compile(file))))
+		// Then create sourcemaps if needed, and write the new CSS file
 		.then(data => Promise.all(data.map(results => {
 			if (opts.sourcemaps) {
 				fsa.writeFile(path.resolve(opts.output, `${results.name}.map`), results.map);
@@ -122,15 +126,14 @@ module.exports = options => {
 
 			return fsa.writeFile(path.resolve(opts.output, `${results.name}.${results.ext}`), results.css);
 		})))
+		// Then build and write our manifest if one is asked for
 		.then(() => {
-			// If a manifest path is set then we will need to grab all of the paths in our outputs folder
 			if (opts.manifest) {
-				return globby(path.join(`${opts.output}`, '*.css'));
+				return writeManifest();
 			}
 
 			return false;
 		})
-		.then(paths => writeManifest(paths))
 		.catch(err => {
 			console.error(err);
 			if (opts.hardquit) {

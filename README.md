@@ -2,7 +2,7 @@
 
 # Sass-Pack
 
-A simple CLI system for compiling sass down to css. Runs async, optionally builds a css manifest.
+A simple CLI system for compiling sass down to css with additional support for other options and features
 
 Install:
 `npm i -D sass-pack`

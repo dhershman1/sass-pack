@@ -61,7 +61,7 @@ test('Test Compile With multi paths', t => {
 	sassPack({
 		source: `${themePath},${bsTheme}`,
 		output: outputPath,
-		manifest: manifestPath
+		manifest: path.join(outputPath, 'multimanifest.json')
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
 			if (err) {
@@ -69,8 +69,8 @@ test('Test Compile With multi paths', t => {
 			}
 
 			t.ok(files.includes('default.css'), 'Default CSS Created');
-			t.ok(files.includes('cssmanifest.json'), 'Manifest Created');
-			fs.readFile(manifestPath, {
+			t.ok(files.includes('multimanifest.json'), 'Manifest Created');
+			fs.readFile(path.join(outputPath, 'multimanifest.json'), {
 				encoding: 'utf8'
 			}, (readErr, data) => {
 				const results = JSON.parse(data);
@@ -87,7 +87,7 @@ test('Test Compile bootstrap and minify', t => {
 	sassPack({
 		source: bsTheme,
 		output: outputPath,
-		manifest: manifestPath,
+		manifest: path.join(outputPath, 'bootstrapmanifest.json'),
 		minify: 'compressed'
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
@@ -95,8 +95,8 @@ test('Test Compile bootstrap and minify', t => {
 				throw err;
 			}
 			t.ok(files.includes('bootstrap.min.css'), 'Bootstrap CSS Created');
-			t.ok(files.includes('cssmanifest.json'), 'Manifest Created');
-			fs.readFile(manifestPath, {
+			t.ok(files.includes('bootstrapmanifest.json'), 'Manifest Created');
+			fs.readFile(path.join(outputPath, 'bootstrapmanifest.json'), {
 				encoding: 'utf8'
 			}, (readErr, data) => {
 				const results = JSON.parse(data);
@@ -112,7 +112,7 @@ test('Test Compile default theme minify & sourcemap', t => {
 	sassPack({
 		source: themePath,
 		output: outputPath,
-		manifest: manifestPath,
+		manifest: path.join(outputPath, 'sourcemap.json'),
 		minify: 'compressed',
 		sourcemaps: outputPath
 	}).then(() => {
@@ -121,8 +121,8 @@ test('Test Compile default theme minify & sourcemap', t => {
 				throw err;
 			}
 			t.ok(files.includes('bootstrap.min.css'), 'Bootstrap CSS Created');
-			t.ok(files.includes('cssmanifest.json'), 'Manifest Created');
-			fs.readFile(manifestPath, {
+			t.ok(files.includes('sourcemap.json'), 'Manifest Created');
+			fs.readFile(path.join(outputPath, 'sourcemap.json'), {
 				encoding: 'utf8'
 			}, (readErr, data) => {
 				const results = JSON.parse(data);
