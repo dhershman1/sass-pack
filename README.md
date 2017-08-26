@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dhershman1/sass-pack.svg?branch=master)](https://travis-ci.org/dhershman1/sass-pack)
+[![Build Status](https://travis-ci.org/dhershman1/sass-pack.svg?branch=master)](https://travis-ci.org/dhershman1/sass-pack) [![npm](https://img.shields.io/npm/v/sass-pack.svg?style=flat)](https://www.npmjs.com/package/sass-pack) [![Downloads](https://img.shields.io/npm/dm/sass-pack.svg?style=flat)](https://www.npmjs.com/package/sass-pack) [![dependencies Status](https://david-dm.org/dhershman1/sass-pack/status.svg)](https://david-dm.org/dhershman1/sass-pack) [![devDependencies Status](https://david-dm.org/dhershman1/sass-pack/dev-status.svg)](https://david-dm.org/dhershman1/sass-pack?type=dev) 
 
 # Sass-Pack
 
