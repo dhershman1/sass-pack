@@ -1,16 +1,18 @@
 {
   "name": "sass-pack",
-  "version": "1.6.2",
+  "version": "2.0.0",
   "description": "A simple sass compiler/minifier CLI tool with optional manifest options",
   "scripts": {
-    "clean": "rimraf tests/outputs/*.{css,json,map}",
-    "test": "npm run clean && node tests/tests.js | tap-spec",
-    "compile": "sass-pack -o tests/outputs -s tests/default.scss",
-    "compile:list": "sass-pack -o tests/outputs -s tests/default.scss,tests/bootstrap.scss -m tests/outputs/listManifest.json",
-    "compile:manifest": "sass-pack -o tests/outputs -s tests/default.scss -m tests/outputs/manifest.json",
-    "compile:maps": "sass-pack -o tests/outputs -t tests/bootstrap.scss -n compressed -x tests/outputs",
+    "clean": "rimraf tests/outputs/*/*.{css,json,map}",
+    "test": "npm run clean && node src/tests/tests.js | tap-spec",
+    "compile": "sass-pack -o src/tests/outputs -s src/tests/default.scss",
+    "compile:list": "sass-pack -o src/tests/outputs -s src/tests/default.scss,src/tests/bootstrap.scss -m src/tests/outputs/listManifest.json",
+    "compile:manifest": "sass-pack -o src/tests/outputs -s src/tests/default.scss -m src/tests/outputs/manifest.json",
+    "compile:maps": "sass-pack -o src/tests/outputs -t src/tests/bootstrap.scss -n compressed -x src/tests/outputs",
     "compile:help": "sass-pack -h",
-    "compile:alias": "sass-pack -o tests/outputs -s tests/test.scss --alias=tests/"
+    "compile:v": "sass-pack -v",
+    "compile:alias": "sass-pack -o tests/outputs/small -s src/tests/test.scss -a src/tests/",
+    "compile:large": "sass-pack -a tests/large-input/ -o tests/outputs/large -s tests/large-input/themes/default.scss -m tests/outputs/large/manifest.json -x tests/outputs/large"
   },
   "keywords": [
     "sass",
@@ -33,18 +35,18 @@
   "author": "Dustin Hershman",
   "license": "ISC",
   "bin": {
-    "sass-pack": "./index.js"
+    "sass-pack": "./src/index.js"
   },
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "rimraf": "^2.5.4",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.6.3"
+    "eslint": "4.9.0",
+    "rimraf": "2.6.2",
+    "tap-spec": "4.1.1",
+    "tape": "4.8.0"
   },
   "dependencies": {
-    "fs-extra": "3.0.1",
-    "globby": "6.1.0",
-    "meow": "^3.7.0",
-    "node-sass": "4.5.3"
+    "fs-extra": "4.0.3",
+    "globby": "7.1.1",
+    "meow": "4.0.0",
+    "node-sass": "4.7.2"
   }
 }

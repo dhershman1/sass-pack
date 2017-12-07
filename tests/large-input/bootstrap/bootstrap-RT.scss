@@ -1,0 +1,54 @@
+/*!
+ * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
+ * Copyright 2011-2017 The Bootstrap Authors
+ * Copyright 2011-2017 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ *
+ * RightTurn Bootstrap Build!
+ *
+ * We can add to this as we see fit for certain components please don't just go 'Oh I used this in one spot'
+ * and then import an entire bootstrap component for one thing. Try to bring stuff in that will be used
+ * in multiple locations unless using bootstrap is the best solution for the problem for that thing.
+ * Which if it is, I may question you as a developer.
+ *
+ * NOTE: None of the below imports require bootstraps JS, please do not use components that require the JS since
+ * we are trying to avoid jquery like the plague here.
+ *
+ * Thanks,
+ *   Dustin
+ */
+
+// Core bootstrap variables and stuff
+@import "functions";
+@import "variables";
+@import "mixins";
+
+// CORE Bootstrap CSS
+@import "reboot";
+@import "type";
+@import "grid";
+@import "tables";
+@import "forms";
+@import "buttons";
+@import "images";
+
+// Extra Bootstrap Components
+@import "button-group";
+@import "input-group";
+@import "alert";
+@import "nav";
+@import "navbar";
+@import "card";
+@import "close";
+@import "pagination";
+
+// Bootstrap utilities
+@import "utilities";
+
+// Full Bleed
+.container-fluid {
+	padding-right:0;
+	padding-left:0;
+	margin-right:auto;
+	margin-left:auto
+}

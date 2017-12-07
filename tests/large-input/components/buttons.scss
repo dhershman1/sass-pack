@@ -1,0 +1,69 @@
+.button {
+	@extend .btn;
+	cursor: pointer;
+	border-radius: 0;
+	padding: 0.5rem .4rem 0.45rem;
+
+	&:hover {
+		background: $primary-button-bg--hover;
+	}
+
+	&--primary {
+		@extend .btn-primary;
+		background: $primary-button-bg;
+		box-shadow: inset 0 1px 0 $primary-button-box-shadow;
+	}
+
+	&--full {
+		width: 100%;
+	}
+
+	&[disabled] {
+		background: $primary-button-bg--disabled;
+		border: 1px solid $primary-button-border--disabled;
+		color: $primary-button-color--disabled;
+	}
+
+}
+
+// Stateful button
+// Vue Transition classes
+.fade-enter-active, .fade-leave-active {
+		transition: opacity 1s;
+}
+
+.fade-enter, .fade-leave-active {
+		opacity: 0;
+		will-change: opacity;
+}
+
+// Our classes/Setup
+@keyframes rotation {
+		from {
+				transform: rotate(0deg)
+		}
+		to {
+				transform: rotate(359deg)
+		}
+}
+
+.stateful-button {
+	display: -webkit-inline-box;
+	display: -ms-inline-flexbox;
+	display: inline-flex;
+	white-space: nowrap;
+	transition: .3s all ease;
+	&--error {
+		background-color: $error;
+	}
+	&__spinner {
+		height: 1rem;
+		width: 1rem;
+		margin-right: 0.3rem;
+		animation: rotation .7s infinite linear;
+		border: 4px solid $primary-button-color--disabled;
+		border-top-color: $primary-button-bg--hover;
+		border-radius: 100%;
+		transition: .3s all ease;
+	}
+}

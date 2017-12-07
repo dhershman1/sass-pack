@@ -1,0 +1,166 @@
+
+.tire-coach {
+	background-color: $tire-coach-bg;
+	border-radius: 0.5rem;
+	padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+	margin-bottom:30px;
+	min-height: 62px;
+
+	// Elements
+	&__header-wrapper {
+		position: relative;
+	}
+
+	&__header {
+		color: $tire-coach-header;
+		margin-left: 20px;
+
+		h2 {
+			color: $tire-coach-header;
+			font-size: 23px;
+			margin-bottom: 0;
+		}
+
+		p {
+			font-size: 14px;
+		}
+	}
+
+	&__rec-icon-wrapper {
+		align-items: center;
+		background-color: $tire-coach-rec-icon-bg;
+		border-radius: 50%;
+		border: 3px solid $tire-coach-rec-icon-border;
+		display: flex;
+		height: 40px;
+		justify-content: center;
+		left: -26px;
+		position: absolute;
+		top: 3px;
+		width: 40px;
+	}
+
+	&__rec-icon {
+		font-size: 1rem;
+	}
+
+	&__form-wrapper {
+		background-color: $tire-coach-form-bg;
+		border-radius: 3px;
+	}
+
+	&__form {
+		padding: .5rem;
+	}
+
+	&__hr {
+		border-top: 1px solid $tire-coach-hr-border;
+		margin: .5rem 0 .75rem 0;
+	}
+
+	&__mountain-snowflake {
+		font-size: 2.09rem;
+	}
+
+	&__hint {
+		padding-top: 4px;
+		font-size: 10px;
+		text-align: right;
+	}
+
+	&__show-button {
+		background-color: $tire-coach-button-cta;
+		margin-bottom: 30px;
+		cursor: pointer;
+	}
+
+	// small screen
+	&__back-btn-left {
+		background-color: $tire-coach-bg;
+		border-radius: 6px 0 0 6px;
+		float: left;
+		height: 100%;
+		width: 85%;
+	}
+
+	// small screen
+	&__back-btn-right {
+		align-items: center;
+		background-color: $tire-coach-button-cta;
+		border-radius: 0 6px 6px 0;
+		display: flex;
+		float: left;
+		height: 100%;
+		justify-content: center;
+		width: 15%;
+
+		.icon {
+			color: $white;
+			transform: rotate(180deg);
+		}
+	}
+
+	// small screen
+	&__back-btn {
+		border: 0;
+		height: 43px;
+		padding: 0;
+		width: 100%;
+		margin-bottom: 15px;
+		cursor: pointer;
+		font-size: 14px;
+	}
+}
+
+@include media-breakpoint-down(md) {
+	.tire-coach {
+		border-radius: .5rem 0 0 .5rem;
+
+		&__rec-icon-wrapper {
+			float: left;
+			left: -4px;
+		}
+
+		&__header {
+			margin-left: 45px;
+		}
+
+		&__form-wrapper {
+			border-radius: 0;
+			bottom: 0;
+			height: 100vh;
+			overflow-x: hidden;
+			position: fixed;
+			top: 0;
+			transform: translate(-1500px);
+			transition: transform .25s;
+			width: 100vw;
+			z-index: 1100;
+		}
+
+		&__form {
+			padding: 1rem;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		&--is-active {
+			overflow: auto;
+		}
+
+		&__show-button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 0 .5rem .5rem 0;
+			color: $white;
+		}
+
+		&--is-fixed {
+			position: fixed;
+			left: 0;
+			right: 0;
+			transform: translate(0);
+		}
+	}
+}

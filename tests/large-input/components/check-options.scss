@@ -1,0 +1,23 @@
+.check-options {
+	margin-bottom: 1rem;
+
+	&__header {
+		font-size: 16px;
+		white-space: nowrap;
+	}
+
+	&__label {
+		font-size: 14px;
+		white-space: nowrap;
+	}
+
+	&__input-wrapper {
+		@extend .form-check;
+	}
+	&__label {
+		@extend .form-check-label;
+	}
+	&__input {
+		@extend .form-check-input;
+	}
+}

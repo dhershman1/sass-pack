@@ -1,0 +1,30 @@
+/*REMOVE THIS*/
+.err {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+.error-input {
+	border-color: $error;
+}
+/*REMOVE THIS*/
+
+.no-l-padding {
+	padding-left: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+
+@include media-breakpoint-up(lg) {
+	.hidden-lg-up {
+		display: none !important;
+	}
+}
+
+@include media-breakpoint-down(xs) {
+	.hidden-xs-down {
+		display: none !important;
+	}
+}

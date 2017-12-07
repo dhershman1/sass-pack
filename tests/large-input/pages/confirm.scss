@@ -1,0 +1,24 @@
+.confirm {
+
+	// Elements
+	&__header {
+		font-size: 1.625em;
+		margin-bottom: 1em;
+		font-weight: bold;
+	}
+
+	&__sub-header {
+		font-size: 1.125em;
+		font-weight: bold;
+	}
+
+	&__tire-name-brand {
+		font-size: 0.875em;
+		font-weight: bold;
+	}
+
+	&__checkout-btn {
+		margin-top: 1em;
+		width: 100%;
+	}
+}

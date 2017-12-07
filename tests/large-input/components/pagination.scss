@@ -1,0 +1,14 @@
+.pagination {	
+	&__item {
+		@extend .page-item;
+	}
+
+	&__link{
+		@extend .page-link;
+	}
+
+	// Modifiers
+	&--center{
+		justify-content: center;
+	}
+}

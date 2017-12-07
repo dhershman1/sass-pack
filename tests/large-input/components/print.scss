@@ -1,0 +1,31 @@
+@media print {
+	.bill-summary {
+		&--button {
+			display: none;
+		}
+	}
+
+	.receipt__document,
+	.footer-wrapper {
+		display: none;
+	}
+
+	.product-summary {
+		font-size: 10px;
+	}
+
+	.app,
+	.container,
+	.container-fluid,
+	.receipt,
+	.bill-summary,
+	.product-summary,
+	.appointment,
+	.appointment__table,
+	.product-summary__table,
+	.bill-summary__table {
+		page-break-after: avoid;
+		font-size: 12px;
+	}
+}
+

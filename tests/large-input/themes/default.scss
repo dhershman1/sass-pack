@@ -1,0 +1,136 @@
+@import 'framework/_default-variables';
+
+/************************
+* Mapping of Variables
+*************************/
+// HTML Elements
+$link: $blue-chill;
+$body: $tundora;
+
+//Error
+$error: $guardsman;
+
+// Appointment
+$appointment-bg: $gallery;
+$appointment-light-bg: $alabaster;
+
+// Buttons
+$primary-button-bg--hover: linear-gradient(180deg, #00A3DA 0%, #1DB1EA 100%);
+$primary-button-bg: linear-gradient(180deg, #1DB1EA 0%, #00A3DA 100%);
+$primary-button-box-shadow: $white;
+$primary-button-bg--disabled: $gallery;
+$primary-button-border--disabled: $silver-chalice;
+$primary-button-color--disabled: $silver-chalice;
+
+// Calendar
+$calendar-controls: $gallery;
+$calendar-selected-time: $cerulean;
+$calendar-time-slot: $blue-chill;
+$calendar-time-slot--disabled: $gallery;
+
+// Dealer Selection
+$dealer-list-border-color: $tundora;
+
+// Details
+$details-selected-item: $cerulean;
+$details-list-default: $black;
+$details-list-bottom-border: $waikawa-gray-28;
+$details-list-bottom-border--active: $cerulean;
+$details-feature-bg: $jagged-ice;
+$details-specs-border: $waikawa-gray-28;
+$details-main-border: $gallery;
+
+// Footer
+$footer-border: $allports;
+$footer-wrapper-bg: transparent;
+
+// Headers
+$header-color: $tundora;
+
+// Location Box
+$location-bg: $gallery;
+$location-border: $cerulean;
+
+// Local Best Seller
+$local-best-seller: $tango;
+
+// Original Equipment
+$original-equipment: $tundora;
+
+// Header
+$nav-icon-color: $black;
+
+// Order Summary
+$order-summary-bg--alt: $gallery;
+$order-totals-border: $tundora;
+
+// Order Totals
+$order-totals-border: $gallery;
+$order-totals-bg: $gallery;
+
+// Payment
+$payment-body: $alabaster;
+$payment-credit-card-bg: $jagged-ice;
+
+// Product Tile
+$tile-bg: $white;
+$tile-border: $gallery;
+$tile-rec-bg: $allports;
+$tile-rec-icon-border: $allports;
+$tile-compare-bg: $white-85;
+$tile-compare-label-color: $tundora;
+$tile-promotions-bg: $gallery;
+$tile-price-description-border: $dusty-gray;
+
+// Promotions
+$promo: $green-leaf;
+$promo-text: $white;
+$promo-border-bottom: $white;
+
+// Search
+$search-bg: $gallery;
+$search-border: $cerulean;
+$search-labels: $tundora;
+
+// Services
+$services-includes-border: $tundora;
+$services-comments-border: $dusty-gray;
+$services-bg--alt: $gallery;
+
+// Receipt
+$receipt-section-bg: $gallery;
+
+// Switch Component
+$slider-bg: $carnation;
+$slider-input: $cerulean;
+$slider-input-shadow: $cerulean;
+$slider-circle: $white;
+
+// Tabs Component
+$tabs-link: $tundora;
+$tabs-link-border: $cerulean;
+$tabs--active-bg: $gallery;
+$tabs--active-color: $black;
+$tabs--not-active: $cerulean;
+
+// Tire Coach Colors
+$tire-coach-bg: $allports;
+$tire-coach-button-cta: $eastern-blue-dark; // small screens only
+$tire-coach-header: $white;
+$tire-coach-hr-border: $silver-chalice;
+$tire-coach-rec-icon-bg: $white;
+$tire-coach-rec-icon-border: $allports;
+$tire-coach-form-bg: $white;
+
+// Reviews
+$star: $saffron;
+
+$vehicle-tire-size-color: $stack;
+
+// Modaler Colors
+$modal-header: $white;
+$modal-content-bg: $white;
+
+$form-icon-error: $form-icon-error;
+
+@import 'framework/_framework';

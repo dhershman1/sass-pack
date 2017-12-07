@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.0.0
+
+> * Fix for Alias bug if file name existed in the folder path it caused issues
+> * Performance improvements
+> * Code optimizations
+> * Brought all of the dependencies up to date
+> * Removed backwards compatibility for depricated `--theme` flag **BREAKING CHANGE**
+> * Add dynamic support for extensions when importing alias (it goes based on the extension of the file the import is being called from)
+> * Better overall path handling for cross system stabilization
+> * Added a large Sass Theme for performance testing
+
 ## v1.6.2
 
 > * Switched to using `LibSass` Importer function for more stable support

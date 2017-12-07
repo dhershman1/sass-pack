@@ -1,0 +1,18 @@
+.error {
+	padding-right: 0;
+	display: flex;
+
+	&__icon {
+		color: $error;
+		font-size: 1.65em;
+		margin-right: 15px;
+		position: relative;
+		top: 5px;
+	}
+
+	&__body {
+		border: 1px solid $error;
+		padding: .5em;
+		width: 100%;
+	}
+}

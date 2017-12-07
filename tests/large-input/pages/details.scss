@@ -1,0 +1,171 @@
+.details {
+
+	&__header {
+		overflow: hidden;
+	}
+
+	&__selected-img {
+		position: absolute;
+		top: 0;
+	}
+
+	&__selectable-img {
+		margin-bottom: 10px;
+		margin-left: 10px;
+		max-height: 35px;
+		cursor: pointer;
+		display: block;
+	}
+
+	&__border {
+		border-bottom: 4px solid $details-main-border;
+		margin-top: 0;
+		margin-bottom: 20px;
+	}
+
+	&__header {
+		font-weight: bold;
+	}
+
+	&__sections-wrapper {
+		display: flex;
+		align-items: flex-start;
+	}
+
+	&__shop-block {
+		display: block !important;
+	}
+
+	&__cms-details {
+		margin-top: 2rem;
+	}
+
+	&__section {
+		flex-basis: 75%;
+		margin-right: 20px;
+	}
+
+	&__sections {
+		margin-top: 1rem;
+	}
+
+	&__list {
+		border-bottom: 2px solid $details-list-bottom-border;
+		list-style-type: none;
+		padding-left: 0;
+		display: flex;
+		justify-content: space-around;
+		align-items: flex-end;
+
+		&__item {
+			width: 33%;
+			position: relative;
+			top: 1px;
+			font-size: .75em;
+			text-align: center;
+			cursor: pointer;
+			font-weight: 600;
+			&--active {
+				border-bottom: 3px solid $details-list-bottom-border--active;
+
+			}
+		}
+		&__anchor {
+			display: inline-block;
+			width: 100%;
+			color: $details-list-default;
+			text-decoration: none;
+		}
+	}
+
+	&__feature-box {
+		background-color: $details-feature-bg;
+	}
+
+	&__feature {
+		padding: .5rem;
+		margin-top: .5rem;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	&__feature-title {
+		font-weight: 600;
+		font-size: .75em;
+		flex-basis: 30%;
+	}
+
+	&__feature-content {
+		font-size: .75em;
+		flex-basis: 70%;
+		margin-bottom: 3px;
+	}
+
+	&__local-best-seller {
+		background-color: $local-best-seller;
+		padding: .3rem;
+		font-size: .75em;
+		text-align: center;
+		color: $white;
+		margin-bottom: 0;
+	}
+
+	&__original-equipment {
+		background-color: $original-equipment;
+		padding: .3rem;
+		font-size: .75em;
+		text-align: center;
+		color: $white;
+		margin-bottom: 0;
+	}
+
+	&__specs-wrapper {
+		margin-bottom: 20px;
+	}
+
+	&__specs {
+		border-bottom: 2px dotted $details-specs-border;
+		display: flex;
+		padding: .2rem;
+		white-space: nowrap;
+		&:last-child {
+			border-bottom: 0;
+		}
+		&__item {
+			width: 50%;
+			margin-bottom: 0;
+		}
+	}
+}
+
+@media (max-width: 680px) {
+	.details {
+		&__sections-wrapper {
+			display: block;
+		}
+
+		&__section {
+			width: 100%;
+			margin-right: 0;
+		}
+
+		&__shop-block {
+			min-width: 100%;
+			margin-top: 20px;
+		}
+
+		&__cms-ad {
+			margin-bottom: 225px;
+		}
+
+		.tile {
+			&__promotions-pricing-wrapper {
+				position: fixed;
+			  right: 0;
+			  bottom: 0;
+			  left: 0;
+			  z-index: 1030;
+			}
+		}
+	}
+}

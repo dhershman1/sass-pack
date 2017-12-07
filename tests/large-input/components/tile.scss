@@ -1,0 +1,511 @@
+.tile {
+	background-color: $tile-bg;
+	border: 1px solid $tile-border;
+	margin-bottom: 20px;
+	min-height: 270px;
+
+	// Elements
+	&__recommended-wrapper {
+		background-color: $tile-rec-bg;
+		position: relative;
+		height: 8px;
+	}
+
+	&__recommended-icon {
+		position: absolute;
+		z-index: 200;
+		left: -17px;
+		top: -15px;
+		height:40px;
+		width:40px;
+		border-radius: 50%;
+		border:3px solid $tile-rec-icon-border;
+		background-color: $white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__img {
+		padding-right: 0;
+		min-height: 300px;
+	}
+
+	&__tire-img-wrapper {
+		overflow: hidden;
+	}
+
+	&__tire-img {
+		position: relative;
+		left: -88px;
+		top: 0;
+	}
+
+	&__compare {
+		display: none;
+		background-color: $tile-compare-bg;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 100;
+		text-align: center;
+		height: 50px;
+	}
+
+	&__compare-label {
+		display: none;
+		color: $tile-compare-label-color;
+		font-size: .85rem;
+		margin-bottom: 0;
+		padding-top: 1rem;
+		white-space: nowrap;
+		z-index: 1;
+		cursor: pointer;
+	}
+
+	&__info-wrapper {
+		position: relative; // For Positioned Compare
+	}
+
+	&__compare-wrapper {
+		display: none;
+		position:absolute;
+		bottom:0;
+		left:0;
+		right:0;
+		background-color: $tile-compare-bg;
+		height: 50px;
+	}
+
+	&__compare-button {
+		margin-left: 1rem;
+	}
+
+	&__flex {
+		display: flex;
+		padding-left: 0;
+	}
+
+	&__compare-input {
+		position: relative;
+		left: 5px;
+		cursor: pointer;
+	}
+
+	&__promotions-pricing-wrapper {
+		background-color: $tile-promotions-bg;
+		position: relative;
+		z-index: 200;
+		max-height: 100%;
+		width: 100%;
+	}
+
+	&__rating {
+		display: none;
+	}
+
+	&__title-rating-wrapper {
+		margin-bottom: 1.5rem;
+		margin-top: 1.5rem;
+	}
+
+	&__tire-brand {
+		font-weight: bold;
+		margin-bottom: 0;
+		margin-top: 1rem;
+		font-size: 18px;
+	}
+
+	&__tire-name {
+		font-size: 18px;
+		display: block;
+		margin-bottom: 1rem;
+		text-decoration: underline;
+		word-break: break-all;
+	}
+
+	&__specs {
+		min-height: 60px;
+	}
+	&__specs-text {
+		font-weight: 300;
+		font-size: 10px;
+		margin-bottom: 3px;
+	}
+
+	&__original-equipment,
+	&__local-best-seller {
+		white-space: nowrap;
+		font-size: .8rem;
+	}
+
+	&__local-best-seller {
+		background-color: $local-best-seller;
+		padding: .125rem;
+		text-align: center;
+		color: $white;
+		margin-bottom: 0;
+	}
+
+	&__original-equipment {
+		background-color: $original-equipment;
+		padding: .125rem;
+		text-align: center;
+		color: $white;
+		margin-bottom: 0;
+	}
+
+	&__stag-qty-wrapper{
+		margin-top: 10px;
+		padding-right: 10px !important; //override bootstrap
+	}
+
+	&__stag-front-pricing {
+		margin-bottom: 10px;
+	}
+
+	&__stag-position-text {
+		font-size: 11px;
+		text-align: left;
+	}
+
+	&__rating-text {
+		font-size: .8rem;
+	}
+
+	&__promotion {
+		position: relative;
+		background-color: $promo;
+		border-width: 0 0 1px 0;
+		border-bottom: 1px dotted $promo-border-bottom;
+		text-align: left;
+
+		&:last-of-type {
+			border-bottom: none;
+		}
+	}
+
+	&__promotion-header {
+		color: $promo-text;
+		font-size: .8rem;
+		font-weight: 600;
+		padding: 10px 15px 10px 20px;
+		margin-bottom: 0;
+		cursor: pointer;
+		display: block;
+		width: 100%;
+		background-color: transparent;
+		border: none;
+		text-align: left;
+	}
+
+	&__promo-details {
+		padding: 5px 10px 10px 20px;
+	}
+
+	&__promotion-body {
+		font-size: .75rem;
+		color: $promo-text;
+		transition: all 1s;
+	}
+
+	&__promotion-link {
+		color: $promo-text;
+		
+		&:hover {
+			color: $promo-text;
+		}
+	}
+
+	&__promotion-download {
+		font-size: 2rem;
+		margin-right: 12px;
+	}
+
+	&__promotions-icon {
+		align-items: center;
+		background-color: $promo;
+		border-radius: 50%;
+		border: 0.15rem solid $promo-text;
+		color: $promo-text;
+		display: flex;
+		font-size: 1rem;
+		font-style: italic;
+		height: 40px;
+		justify-content: center;
+		left: -10px;
+		position: absolute;
+		top: 0;
+		width: 40px;
+		z-index: 1;
+	}
+
+	&__promotions-dollar {
+		fill: $promo-text;
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		left: 8px;
+		top: 7px;
+	}
+
+	&__promotion-arrow-down {
+		pointer-events: none;
+		position: absolute;
+		font-size: 1rem;
+		right: 10px;
+		top: 14px;
+	}
+
+	&__price-description {
+		border-bottom: 1px solid $tile-price-description-border;
+		font-size: .75rem;
+		font-weight: bold;
+		margin-bottom: .65rem;
+		text-align: right;
+		padding-bottom: 4px;
+		font-style: italic;
+	}
+
+	&__price-set-of-4 {
+		margin-top: 1rem;
+		text-align: right;
+		font-size: .75rem;
+	}
+
+	&__pricing-wrapper {
+		align-content: flex-start;
+		padding: 10px;
+	}
+
+	&__price {
+		margin-bottom: 0;
+	}
+
+	&__price--retail {
+		text-align: right;
+		font-size: 1rem;
+	}
+
+	&__price--install {
+		font-size: 1.3rem;
+		font-weight: bold;
+		text-align: right;
+	}
+
+	&__stag-pricing-table {
+		width: 100%;
+		text-align: right;
+		tr { // Not BEM but simple enough
+			vertical-align: bottom;
+		}
+		&--padding {
+			padding-bottom: 15px;
+		}
+	}
+
+	&__price--stag--retail {
+		font-size: 16px;
+	}
+
+	&__price--stag--install {
+		font-weight: bold;
+		font-size: 20px;
+	}
+
+	&__qty-button-wrapper {
+		align-items: center;
+		display: flex;
+		width: 100%;
+	}
+
+	&__qty-label {
+		font-size: .6875rem;
+	}
+
+	&__quantity-input-wrapper {
+		text-align: right;
+	}
+
+	&__quantity-input {
+		@extend .form-control;
+		display: inline-block;
+		font-size: 1.1rem;
+		font-weight: 600;
+		text-align: center;
+	}
+
+	&__staggered-rear {
+		margin-top: 1rem;
+	}
+
+	// Modifiers
+	&--promo-bg {
+		background-color: $promo;
+		width: 100%;
+	}
+
+	&--staggered-height {
+		min-height: 248px;
+	}
+
+	&--loose-height {
+		min-height: 183px;
+	}
+
+	&__quantity-input--staggered {
+		margin-top: 0;
+	}
+
+	&__compare-label--disabled {
+		cursor: not-allowed;
+	}
+
+	&__no-wrap {
+		white-space: nowrap;
+
+		&--strike {
+			text-decoration: line-through;
+		}
+	}
+
+	&__strike-through {
+		color: $promo;
+	}
+
+	&--recommended {
+		border-top: 0;
+	}
+}
+
+@include media-breakpoint-down(lg) {
+	.tile {
+		&__original-equipment,
+		&__local-best-seller {
+			font-size: 10px;
+		}
+	}
+}
+
+// max-width 768px
+@include media-breakpoint-down(sm) {
+	.tile {
+
+		&__price--stag--retail {
+			font-size: 12px;
+		}
+
+		&__specs {
+			margin-top: 10px;
+			padding-bottom: 45px;
+		}
+
+		&__price--stag--install {
+			font-size: 14px;
+		}
+
+		&__price {
+			margin-bottom: 10px;
+		}
+
+		&--stag-button {
+			margin-top: 10px;
+		}
+
+		&__stag-qty-wrapper {
+			padding-right: 0 !important;
+		}
+
+		&--staggered-height {
+			min-height: 297px;
+		}
+
+		&--loose-height {
+			min-height: 279px;
+		}
+
+	}
+}
+
+// max-width 576px
+@include media-breakpoint-down(xs) {
+	.tile {
+		font-size: .8rem;
+
+		&__compare-wrapper {
+			padding-top: 8px;
+		}
+
+		&__promotion-header {
+			font-size: 11px;
+		}
+
+		&__stag-position-text {
+			font-size: 10px;
+		}
+
+		&__price--stag--install {
+			font-size: 12px;
+		}
+
+		&__price-description {
+			font-size: 10px;
+		}
+
+		&__price--stag--retail {
+			font-size: 10px;
+			padding-left: 3px;
+		}
+
+		&__qty-button-wrapper {
+			flex-wrap: wrap;
+		}
+
+		&--button {
+			margin-top: 10px;
+		}
+
+		&__recommended-icon {
+			left: -10px;
+		}
+
+		&__compare-wrapper {
+			min-width: 300px;
+		}
+
+		&__compare-button {
+			margin-left: 0;
+			font-size: 11px;
+			padding: 10px;
+		}
+
+		&__promotion-header {
+			font-weight: normal;
+		}
+
+		&__promo-details {
+			padding: 5px;
+		}
+
+		&__promotions-icon {
+			font-size: 12px;
+			width: 30px;
+			height: 30px;
+			top: 3px;
+			left: 0;
+		}
+
+		&__promotion-arrow-down {
+			font-size: 8px;
+		}
+
+		&--staggered-height {
+			min-height: 294px;
+		}
+
+		&--loose-height {
+			min-height: 326px;
+		}
+	}
+}

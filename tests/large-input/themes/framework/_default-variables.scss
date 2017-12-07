@@ -1,0 +1,34 @@
+@import '@/components/functions';
+
+// Fonts
+$font-family:  Helvetica, Arial, sans-serif;
+$header-weight: bold;
+
+// Colors
+$cerulean: #00b1eb;
+$deep-cerulean: hsl(198, 100%, 33%);
+$blue-chill: #1076A1;
+$jagged-ice: hsl(180, 50%, 87%);
+$eastern-blue: hsl(180, 74%, 39%);
+$eastern-blue-dark: #2687AF;
+$allports: #0073A1;
+$carnation: hsl(359, 83%, 62%);
+$guardsman: #CE0001;
+$green-leaf: hsl(88, 92%, 24%);
+$saffron: #f9b93d;
+$white: hsl(0, 0, 100%);
+$white-65: hsla(0, 0, 100%, 0.65);
+$white-85: hsla(0, 0, 100%, 0.85);
+$black: hsl(0, 0, 0);
+$black-20: hsla(0, 0, 0, 0.2);
+$tundora: hsl(0, 0, 29%);
+$waikawa-gray: hsl(219, 29%, 52%);
+$waikawa-gray-28: hsla(219, 29%, 52%, 0.28);
+$dusty-gray: hsl(0, 0, 61%);
+$silver-chalice: hsl(0, 0, 67%);
+$gallery: hsl(0, 0, 92%);
+$alabaster: #FAFAFA;
+$tango: #F4802B;
+$stack: #878986;
+// SVG Icons
+$form-icon-error: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$guardsman}' d='M4.4 5.324h-.8v-2.46h.8zm0 1.42h-.8V5.89h.8zM3.76.63L.04 7.075c-.115.2.016.425.26.426h7.397c.242 0 .372-.226.258-.426C6.726 4.924 5.47 2.79 4.253.63c-.113-.174-.39-.174-.494 0z'/%3E%3C/svg%3E"), "#", "%23");

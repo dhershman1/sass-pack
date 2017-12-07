@@ -1,0 +1,107 @@
+.appointment {
+	position: relative;
+	margin-bottom: 1em;
+	font-size: 1rem;
+
+	&--light-bg {
+		background-color: $appointment-light-bg;
+	}
+
+	// Elements
+	&__header {
+		font-size: 1.125em;
+		font-weight: bold;
+
+		&--large {
+			font-size: 1.5em;
+		}
+		&--extra-margin {
+			margin-bottom: 1.5em;
+		}
+	}
+
+	&__table {
+		width: 100%;
+	}
+
+	&__error-padding {
+		padding-top: 10px;
+	}
+
+	&__button {
+		border: none;
+		background-color: transparent;
+		color: $link;
+		padding-left: 0;
+
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__cell {
+		font-size: .875em;
+		padding-bottom: 1em;
+		vertical-align: top;
+		line-height: 1.4;
+	}
+
+	&__error-icon {
+		color: $error;
+		font-size: 1.65em;
+		position: absolute;
+		top: 20px;
+		left: 20px;
+	}
+
+	&__error-message {
+		color: $error;
+	}
+
+	&--full-bleed{
+		&:before,
+		&:after {
+			content: "";
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			width: 9600px;
+			right: 100%;
+			background: inherit;
+		}
+		&:after {
+			width: 320px;
+			left: 100%;
+			background-color: inherit;
+		}
+	}
+
+	// Modifiers
+	&__cell--left {
+		min-width: 20%;
+	}
+
+	&--padding {
+		background-color: $appointment-bg;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	&--error {
+		padding: 5px;
+		background-color: $white;
+		outline: 1px solid $error;
+	}
+
+}
+
+@include media-breakpoint-up(md) {
+	.appointment {
+		&__error-icon {
+			font-size: 1.65em;
+			position: absolute;
+			top: 5px;
+			left: -20px;
+		}
+	}
+}

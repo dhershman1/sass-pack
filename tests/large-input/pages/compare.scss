@@ -1,0 +1,60 @@
+// Compare page
+.product-name {
+	font-size: 1.25rem;
+	color: $gallery;
+	cursor: pointer;
+	&:hover {
+		color: $jagged-ice;
+	}
+}
+
+.compare {
+	box-black-20: 0 0.1rem 2rem 0 $black-20, 0 0.2rem 1rem 0 $black-20;
+	padding: 0 1rem;
+	.qty {
+		text-align: center;
+		background-color: $gallery;
+		padding: 1rem 0.5rem;
+	}
+	.pricing {
+		text-align: center;
+		background-color: $gallery;
+		.retail {
+			color: $tundora;
+			font-weight: bold;
+			font-size: 1.4rem;
+			line-height: 2.5rem;
+		}
+		.install {
+			font-weight: bold;
+			font-size: 2rem;
+			line-height: 2.5rem;
+		}
+		input {
+			font-size: 1.1rem;
+			font-weight: 600;
+		}
+		p {
+			margin-bottom: 0;
+		}
+	}
+	.detail {
+		text-align: center;
+		border-bottom: 0.1rem solid $silver-chalice;
+		padding: 0.3rem;
+		p {
+			margin-bottom: 0.1rem;
+		}
+		&:first-child {
+			border-top: 0.1rem solid $silver-chalice;
+		}
+		&:last-child {
+			border-bottom: 0;
+		}
+	}
+	.header {
+		padding: 0.4rem;
+		color: $white;
+		background: linear-gradient(rgba(10,10,10, .5), rgba(10,10,10, .5)), url('/dist/imgs/french-girl-tire.png');
+	}
+}

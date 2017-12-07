@@ -1,0 +1,42 @@
+.vehicle-info {
+	margin-bottom: 20px;
+
+	&__we-found {
+		font-size: 20px;
+	}
+
+	&__model-size-name {
+		color: $vehicle-tire-size-color;
+		font-size: 16px;
+		font-weight: normal;
+	}
+
+	&__img-wrapper {
+		position: relative;
+		overflow: hidden;
+		min-height: 138px;
+		text-align: right;
+	}
+
+	&__evox-img {
+		position: absolute;
+		width: 300px;
+		top: -30px;
+		left: 0;
+	}
+
+}
+
+@media (max-width: 600px) {
+	.vehicle-info {
+		margin-bottom: 0;
+	}
+}
+
+@media (max-width: 380px) {
+	.vehicle-info {
+		&__img-wrapper {
+			min-height: auto;
+		}
+	}
+}

@@ -1,0 +1,10 @@
+.details-list {
+	list-style-type: none;
+	padding-left: 0;
+
+	&__item {
+		border-bottom: 3px solid $details-selected-item;
+		font-size: .75em;
+	}
+
+}

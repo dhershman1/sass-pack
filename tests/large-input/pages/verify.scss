@@ -1,0 +1,22 @@
+.verify {
+
+	&__label {
+		@extend .form-check-label;
+
+		&:not(:last-child) {
+			margin-right: 1.2em;
+		}
+	}
+
+	&__paragraph {
+		margin-bottom: 0;
+	}
+}
+
+@include media-breakpoint-down(xs) {
+	.verify {
+		&__cms-content {
+			margin-top: 20px;
+		}
+	}
+}

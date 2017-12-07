@@ -1,0 +1,145 @@
+
+.calendar {
+
+	&__api-logo {
+		text-align: right;
+	}
+
+	&__api-text {
+		font-size: 10px;
+		margin-right: 3px;
+	}
+
+	&__controls-text {
+		font-size: 14px;
+		margin-bottom: 3px;
+	}
+
+	&__transport-label {
+		font-weight: 700;
+	}
+
+	&__transport-list {
+		@extend .form-control;
+		display: inline-block;
+		background-color: transparent;
+	}
+
+	&__radio {
+		max-width: 400px;
+		border: none;
+	}
+
+	&__dropdown {
+		max-width: 200px;
+	}
+
+	&__transport-option {
+		display: inline;
+
+		&:not(:last-child) {
+			margin-right: 15px;
+		}
+	}
+
+	&__controls {
+		display: flex;
+		align-items: baseline;
+		background-color: $calendar-controls;
+		justify-content: space-between;
+		margin-bottom: 15px;
+	}
+
+	&__next,
+	&__previous {
+		padding: 15px;
+		font-size: 20px;
+		border: none;
+		background-color: $calendar-controls;
+		&:hover{
+			cursor: pointer;
+		}
+		&[disabled] {
+			opacity: .35;
+			cursor: default;
+		}
+	}
+
+	&__previous {
+		transform: rotate(90deg);
+	}
+
+	&__next {
+		transform: rotate(270deg);
+	}
+
+	&__date {
+		margin-bottom: 0;
+		line-height: 1;
+		font-size: 1em;
+	}
+
+	&__day {
+		display: block;
+		margin-bottom: 4px;
+		font-size: .75em;
+	}
+
+	&__range {
+	}
+
+	&__picker {
+		display: flex;
+		margin-bottom: 3px;
+	}
+
+	&__day-column {
+		margin-right: 5px;
+		text-align: right;
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+
+	&__timeslot {
+		color: $white;
+		width: 100%;
+		margin-bottom: 5px;
+		background-color: $calendar-time-slot;
+		border-radius: 0;
+		border: none;
+		text-align: right;
+		padding: 10px 4px;
+		font-size: 1.1rem;
+		&:hover{
+			cursor: pointer;
+		}
+		&--selected {
+			background-color: $calendar-selected-time;
+			color: black;
+		}
+	}
+
+	&__timeslot[disabled] {
+		color: $calendar-time-slot--disabled;
+		background-color: $calendar-time-slot--disabled;
+		&:hover{
+			cursor: default;
+		}
+	}
+
+	&__ampm {
+		display: block;
+		font-size: .7rem;
+		pointer-events: none;
+	}
+}
+
+@include media-breakpoint-down(xs) {
+	.calendar {
+		&__timeslot {
+			font-size: .7rem;
+			font-weight: bold;
+		}
+	}
+}

@@ -1,0 +1,28 @@
+.input {
+	@extend .form-group;
+
+	&__label {
+		margin-bottom: 0;
+		font-size: .7em;
+		display: block;
+	}
+
+	&__field {
+		@extend .form-control;
+
+		&--error {
+			border: 1px solid $error;
+			background-image: $form-icon-error;
+			background-repeat: no-repeat;
+			background-position: center right calc(#{$input-height} / 4);
+			background-size: calc(#{$input-height} / 2) calc(#{$input-height} / 2);
+		}
+	}
+
+	&__error-reason {
+		color: $error;
+		font-size: .7em;
+		position: absolute;
+	}
+
+}

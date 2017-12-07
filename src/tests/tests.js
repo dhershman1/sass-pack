@@ -3,10 +3,10 @@ const fs = require('fs');
 const sassPack = require('../index.js');
 
 const path = require('path');
-const outputPath = path.join('tests', 'outputs');
-const themePath = path.join('tests', 'default.scss');
-const bsTheme = path.join('tests', 'bootstrap.scss');
-const aliasTheme = path.join('tests', 'test.scss');
+const outputPath = path.join('tests', 'outputs', 'small');
+const themePath = path.join('src', 'tests', 'default.scss');
+const bsTheme = path.join('src', 'tests', 'bootstrap.scss');
+const aliasTheme = path.join('src', 'tests', 'test.scss');
 const manifestPath = path.join(outputPath, 'cssmanifest.json');
 
 test('Test Compile Without Manifest', t => {
@@ -139,12 +139,13 @@ test('Test alias pathing replacement', t => {
 		source: aliasTheme,
 		output: outputPath,
 		minify: 'compressed',
-		alias: 'tests/'
+		alias: 'src/tests'
 	}).then(() => {
 		fs.readdir(outputPath, (err, files) => {
 			if (err) {
 				throw err;
 			}
+
 			t.ok(files.includes('test.min.css'), 'Bootstrap CSS Created');
 			t.end();
 		});

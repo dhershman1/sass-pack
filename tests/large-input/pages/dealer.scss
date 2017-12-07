@@ -1,0 +1,166 @@
+.dealer-selection-no-dealer {
+	margin-top: 0.5rem;
+}
+
+.dealer-radius-form {
+	@extend .form-check;
+	@extend .form-check-inline;
+	margin-top: 20px;
+
+	&__zip {
+		font-weight: bold;
+		margin-right: 10px;
+	}
+	&__input {
+		@extend .form-check-input;
+	}
+	&__label {
+		@extend .form-check-label;
+		padding-right: 15px;
+	}
+
+}
+
+.dealer {
+
+	&__header {
+		font-size: 36px;
+		margin-bottom: 22px;
+	}
+
+	&__show-modal {
+		background-color: transparent;
+		border: none;
+		color: $link;
+		float: right;
+		font-size: 12px;
+		padding-top: 17px;
+		padding-right: 0;
+		text-decoration: underline;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+
+	&__content-placeholder {
+		margin-top: 20px;
+	}
+
+	&__static-placeholder {
+		margin-top: 20px;
+		// Not BEM but needed to target 3rd party component
+		.animated-background {
+			animation-iteration-count: 0 !important;
+		}
+	}
+
+	@include media-breakpoint-up(md) {
+		&__show-modal {
+			display: none;
+		}
+	}
+}
+
+@include media-breakpoint-down(xs) {
+	.dealer-radius-form {
+		&__near {
+			display: block;
+		}
+	}
+}
+
+// Not BEM but targeting first child for a different border
+.dealer-wrapper:first-child .dealer-list {
+	border-top: 2px solid $dealer-list-border-color;
+}
+
+.dealer-list {
+	border-top: 1px dashed $dealer-list-border-color;
+	padding: 1rem 0;
+
+	// Elements
+	&__info-wrapper {
+		margin-bottom: 1rem;
+	}
+
+	&__name {
+		font-size:20px;
+		font-weight: bold;
+		margin-bottom: 0;
+	}
+
+	&__hours-title {
+		font-size: 16px;
+		font-weight: bold;
+		margin-bottom: 3px;
+	}
+
+	&__hours-list {
+		list-style-type: none;
+		margin-bottom: 0;
+		padding: 0;
+		font-size: 16px;
+	}
+
+	&__address-line-1,
+	&__address-line-2,
+	&__rating {
+		font-size: 16px;
+		margin-bottom: 0;
+	}
+
+	&__info-rating-wrapper {
+		display: flex;
+	}
+
+	&__rating {
+		flex-basis: 100px;
+		margin-left: auto;
+	}
+
+	&__amenities-titles {
+		font-size: 16px;
+		font-weight: bold;
+	}
+
+	&__amenities-list {
+		padding-left: 20px;
+		margin-bottom: 3px;
+	}
+
+	&__amenities-item {
+		font-size: 12px;
+		line-height: 1.5;
+	}
+
+	&__cta {
+		padding-top: 30px;
+	}
+}
+
+@include media-breakpoint-down(sm) {
+	.dealer-list {
+		&__amenities-titles {
+			margin-top: 17px;
+		}
+
+		&__amenities {
+			order: 1;
+			align-self: flex-end;
+		}
+
+		&__info-rating-wrapper {
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		&__info-wrapper {
+			margin-bottom: 5px;
+		}
+
+	}
+
+	.dealer-selection-cms {
+		display: none;
+	}
+}

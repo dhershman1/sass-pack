@@ -1,0 +1,30 @@
+.range {
+	margin-bottom: 1rem;
+
+	// Elements
+	&__header {
+		font-size: 16px;
+	}
+	&__label-wrapper {
+		font-size: 0.9rem;
+		white-space: nowrap;
+	}
+	&__label {
+		margin-bottom: 0;
+		&:first-child{ //Can look into converting to modifer class if more than 3 range labels
+			text-align: left;
+		}
+		&:nth-child(2) {
+			text-align: center;
+		}
+		&:last-child {
+			text-align: right;
+		}
+
+	}
+	&__input {
+		@extend .form-control;
+		margin-left: 0; // Firefox Fix
+		margin-right: 0; // Firefox Fix
+	}
+}

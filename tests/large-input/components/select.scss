@@ -1,0 +1,12 @@
+.sort {
+	margin-bottom: 1rem;
+
+	// Elements
+	&__label {
+		font-size: 0.8rem;
+		margin: 0;
+	}
+	&__select {
+		@extend .form-control;
+	}
+}

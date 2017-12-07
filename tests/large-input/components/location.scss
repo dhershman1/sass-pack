@@ -1,0 +1,45 @@
+.location {
+	padding: 25px;
+	background-color: $location-bg;
+	border-radius: 6px;
+	border: 1px solid $location-border;
+
+	// Elements
+	&__wrapper {
+		max-width: 195px;
+		margin: 0 auto;
+	}
+
+	&__input-group {
+		@extend .input-group;
+	}
+
+	&__label {
+		text-transform: uppercase;
+	}
+
+	&__search-button {
+		@extend .input-group-addon;
+		@extend .button;
+		@extend .button--primary;
+		min-width: 50px;
+		display: flex;
+		justify-content: center;
+	}
+
+	&__search-button-icon {
+		color: $white;
+	}
+
+	&__text {
+		font-weight: bold;
+		margin: 1.15rem 0 0 0;
+		text-align: center;
+	}
+
+	// Modifiers
+	&--has-error {
+		@extend .alert-danger;
+		@extend .alert;
+	}
+}

@@ -1,0 +1,56 @@
+.tabs{
+
+	// Elements
+	&__list {
+		@extend .nav;
+		@extend .nav-tabs;
+		position: relative;
+		z-index: 500;
+		border-color: transparent;
+	}
+
+	&__item {
+		@extend .nav-item;
+		border: none;
+		position: relative;
+		top: 1px;
+		margin-top: -2px;
+	}
+
+	&__link {
+		@extend .nav-link;
+		color: $tabs-link;
+		background-color: $white;
+		border: 1px solid $tabs-link-border !important;
+		border-bottom-color: transparent !important;
+		min-width: 127px;
+		text-align: center;
+	}
+
+	// States
+	.is-active {
+		font-weight: bold;
+		background-color: $tabs--active-bg;
+		color: $tabs--active-color;
+	}
+
+	.is-not-active {
+		border: 1px solid $tabs--not-active !important;
+	}
+
+	li:first-child {
+		a {
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+	}
+
+
+	li:last-child {
+		a {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+}
+

@@ -1,0 +1,16 @@
+
+.icon--white{
+	color: $white;
+}
+
+.icon--star {
+	color: $star;
+}
+
+
+// Not BEM but is necessary
+a {
+	.icon {
+		text-decoration:none;
+	}
+}

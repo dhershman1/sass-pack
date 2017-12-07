@@ -1,0 +1,11 @@
+.product-item {
+	transition: all 1s;
+}
+
+.product-items-enter,
+.product-items-enter-to,
+.product-items-leave,
+.product-items-leave-to {
+	transform: translateX(100px);
+	opacity: 0;
+}

@@ -1,0 +1,16 @@
+.form {
+
+	&__input-group{
+		@extend .input-group;
+	}
+
+	&__input{
+		@extend .form-control;
+	}
+
+	&__input-group-button{
+		@extend .input-group-addon;
+		@extend .button;
+		@extend .button--primary;
+	}
+}
