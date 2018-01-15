@@ -1,0 +1,9 @@
+{
+	"version": 3,
+	"file": "small",
+	"sources": [
+		"../default.scss"
+	],
+	"names": [],
+	"mappings": "AAAA,AAAA,IAAI,AAAC,CACH,KAAK,CAAE,IAAI,CAIZ,AALD,AAEE,IAFE,CAEF,WAAW,AAAC,CACV,gBAAgB,CAAE,IAAI,CACvB"
+}

@@ -1,4 +1,4 @@
-@import 'framework/_default-variables';
+@import '../framework/_default-variables';
 
 /************************
 * Mapping of Variables
@@ -133,4 +133,4 @@ $modal-content-bg: $white;
 
 $form-icon-error: $form-icon-error;
 
-@import 'framework/_framework';
+@import '../framework/_framework';

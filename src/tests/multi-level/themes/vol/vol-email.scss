@@ -1,0 +1,104 @@
+@import '../framework/_default-variables';
+
+$jaffa: #EB9452;
+$fiord: #425563;
+$horizon: #5b7F97;
+
+body {
+	width: 600px;
+	margin: 0 auto;
+	font-family: Arial;
+	font-size: 14px;
+	color: $tundora;
+}
+
+.box {
+	background-color: $gallery;
+	margin-bottom: 1em;
+}
+
+h1 {
+	color: $thunder;
+}
+
+.alert {
+	background: $jaffa;
+	color: $white;
+	text-transform: uppercase;
+	font-weight: bold;
+	padding: 10px;
+	text-align: center;
+	margin-bottom: 1em;
+}
+
+.blue {
+	color: $horizon;
+	font-weight: bold;
+}
+
+.box h2 {
+	background-color: $dusty-gray;
+	color: $white;
+	font-size: 24px;
+	padding: 5px 10px;
+	margin: 0;
+}
+
+.box h2.appointment {
+	background-color: $fiord;
+}
+
+.box-content {
+	font-size: 14px;
+	padding: 0.5em 1em;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+td {
+	padding: 5px 0;
+}
+
+.total {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.header {
+	border-bottom: 5px solid $mercury;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+.header:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.contact {
+	float: left;
+	margin-top: 20px;
+}
+
+.logo {
+	float: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.border-top td {
+	border-top: 1px solid $dusty-gray;
+}
+
+.border-bottom td {
+	border-bottom: 1px solid $dusty-gray;
+}
+
+.tire {
+	font-size: 16px;
+}

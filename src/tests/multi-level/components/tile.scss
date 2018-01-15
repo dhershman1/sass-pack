@@ -130,8 +130,8 @@
 	}
 	&__specs-text {
 		font-weight: 300;
-		font-size: 10px;
-		margin-bottom: 3px;
+		font-size: 12px;
+		margin-bottom: .5em;
 	}
 
 	&__original-equipment,
@@ -212,7 +212,7 @@
 
 	&__promotion-link {
 		color: $promo-text;
-		
+
 		&:hover {
 			color: $promo-text;
 		}

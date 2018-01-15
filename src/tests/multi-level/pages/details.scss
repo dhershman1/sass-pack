@@ -1,5 +1,17 @@
 .details {
 
+	&__back {
+		text-align: right;
+		margin-bottom: 10px;
+		font-weight: 400;
+		font-size: 14px;
+		color:  $primary-button-bg;
+
+		&:hover {
+			color: $primary-button-bg--hover;
+		}
+	}
+
 	&__header {
 		overflow: hidden;
 	}

@@ -1,0 +1,328 @@
+@import '../framework/_default-variables';
+
+@font-face {
+    font-family: VW-Bold;
+    src: url('/dist/css/fonts/VWHeadWeb-Bold.woff2') format('woff2'),
+    	 url('/dist/css/fonts/VWHeadWeb-Bold.woff') format('woff');
+}
+
+$matisse: #2274AC;
+$mercury: #E6E6E6;
+$denim: #1874B7;
+$scarpaFlow: #59595B;
+$chathamsBlue: #134679;
+$danube: #719ED1;
+$iron: #CDD4D5;
+$alto: #D8D8D8;
+$thunder: #272425;
+$shark: #2C2D32;
+$silver: #BBB;
+
+/************************
+* Mapping of Variables
+*************************/
+// HTML Elements
+$link: $cerulean;
+$body: $tundora;
+
+//Error
+$error: $guardsman;
+
+// Appointment
+$appointment-bg: $gallery;
+$appointment-light-bg: $alabaster;
+
+// Buttons
+$primary-button-bg--hover: $matisse;
+$primary-button-bg: $cerulean;
+$primary-button-box-shadow: $white;
+$primary-button-bg--disabled: $white;
+$primary-button-border--disabled: $alto;
+$primary-button-color--disabled: $silver;
+
+// Calendar
+$calendar-controls: $gallery;
+$calendar-selected-time: $chathamsBlue;
+$calendar-time-slot: $danube;
+$calendar-time-slot--disabled: $gallery;
+
+// Dealer Selection
+$dealer-list-border-color: $tundora;
+
+// Details
+$details-selected-item: $cerulean;
+$details-list-default: $black;
+$details-list-bottom-border: $waikawa-gray-28;
+$details-list-bottom-border--active: $cerulean;
+$details-feature-bg: $jagged-ice;
+$details-specs-border: $waikawa-gray-28;
+$details-main-border: $gallery;
+
+// Footer
+$footer-border: transparent;
+$footer-wrapper-bg: $shark;
+
+// Headers
+$header-color: $thunder;
+
+// Location Box
+$location-bg: $mercury;
+$location-border: $cerulean;
+
+// Local Best Seller
+$local-best-seller: $denim;
+
+// Original Equipment
+$original-equipment: $scarpaFlow;
+
+// Header
+$nav-icon-color: $black;
+
+// Order Summary
+$order-summary-bg--alt: $gallery;
+$order-totals-border: $tundora;
+
+// Order Totals
+$order-totals-border: $gallery;
+$order-totals-bg: $gallery;
+
+// Payment
+$payment-body: $alabaster;
+$payment-credit-card-bg: $jagged-ice;
+
+// Product Tile
+$tile-bg: $white;
+$tile-border: $mercury;
+$tile-rec-bg: $chathamsBlue;
+$tile-rec-icon-border: $chathamsBlue;
+$tile-compare-bg: $white-85;
+$tile-compare-label-color: $tundora;
+$tile-promotions-bg: $mercury;
+$tile-price-description-border: $alto;
+
+// Promotions
+$promo: $green-leaf;
+$promo-text: $white;
+$promo-border-bottom: $white;
+
+// Receipt
+$receipt-section-bg: $white;
+
+
+// Search
+$search-bg: $gallery;
+$search-border: $cerulean;
+$search-labels: $tundora;
+
+// Services
+$services-includes-border: $tundora;
+$services-comments-border: $dusty-gray;
+$services-bg--alt: $gallery;
+
+// Switch Component
+$slider-bg: $white;
+$slider-input: $cerulean;
+$slider-input-shadow: $cerulean;
+$slider-circle: $white;
+
+// Tabs Component
+$tabs-link: $tundora;
+$tabs-link-border: $cerulean;
+$tabs--active-bg: $gallery;
+$tabs--active-color: $black;
+$tabs--not-active: $cerulean;
+
+// Tire Coach Colors
+$tire-coach-bg: $chathamsBlue;
+$tire-coach-button-cta: $chathamsBlue; // small screens only
+$tire-coach-header: $white;
+$tire-coach-hr-border: $silver-chalice;
+$tire-coach-rec-icon-bg: $white;
+$tire-coach-rec-icon-border: $chathamsBlue;
+$tire-coach-form-bg: $white;
+
+// Reviews
+$star: $saffron;
+
+$vehicle-tire-size-color: $stack;
+
+// Modaler Colors
+$modal-header: $white;
+$modal-content-bg: $white;
+
+$form-icon-error: $form-icon-error;
+
+@import '../framework/_framework';
+
+h1 {
+	font-family: VW-Bold;
+	font-weight: normal;
+}
+
+.header {
+	padding-bottom: 0;
+}
+
+.header-customer-service {
+	display: none;
+}
+
+.header-dealer-name {
+	color: $tundora;
+	font-size: 18px;
+	text-align: left;
+	padding-top: 12px;
+	margin-top: 20px;
+}
+
+.button {
+	text-transform: uppercase;
+	padding: 0.75rem .4rem 0.65rem;
+	font-weight: 700;
+
+	&--primary {
+		border-radius: 5px;
+		border: none;
+		box-shadow: none;
+		font-size: 14px;
+	}
+}
+
+.footer {
+	color: $white;
+
+	&__links {
+		text-align: right;
+	}
+
+	&__links-item {
+
+		&:not(:last-child) {
+			margin-right: 2px;
+		}
+
+		a {
+			font-size: 14px;
+			color: $white;
+			text-decoration: none;
+			font-weight: bold;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		&:after {
+			padding-left: 5px;
+			content: '|';
+		}
+	}
+
+	&__links-item:last-child {
+		&:after {
+			content : '';
+		}
+	}
+
+	&__copyright {
+		font-size: 13px;
+	}
+
+	@include media-breakpoint-down(sm) {
+		&__copyright,
+		&__links {
+			text-align: center;
+		}
+	}
+}
+
+.switch {
+	&__slider {
+		border: 1px solid $dusty-gray;
+
+		&:before {
+			border: 1px solid $dusty-gray;
+			bottom: 3px;
+		}
+	}
+}
+
+.tile {
+	&__tire-name {
+		color: $cerulean;
+	}
+}
+
+.location {
+	border: none;
+
+	&__label {
+		font-size: 12px;
+	}
+
+	&__search-button {
+		background-color: $white;
+		border-bottom-right-radius: 30px;
+		border-top-right-radius: 30px;
+
+		&:hover {
+			background-color: $white;
+		}
+	}
+
+	&__search-input {
+		border-bottom-left-radius: 30px;
+		border-top-left-radius: 30px;
+		border: none;
+	}
+
+	&__search-button-icon {
+		color: $cerulean;
+	}
+}
+
+.dealer-list {
+	border-top: 1px solid $iron;
+}
+
+
+.calendar {
+	&__controls-text {
+		display: none;
+	}
+
+	&__timeslot--selected {
+		color: $white;
+	}
+}
+
+.credit-card {
+	background-color: $mercury;
+	border-radius: 6px;
+}
+
+.tabs {
+	.is-not-active {
+		color: $white;
+		background-color: $dusty-gray;
+	}
+}
+
+@include media-breakpoint-up(md){
+	.header {
+		padding: 20px 0;
+	}
+
+	.header-dealer-name {
+		text-align: right;
+		margin-top: 0;
+	}
+
+	.tile {
+
+		&__qty-button-wrapper {
+			margin-top: 20px;
+		}
+
+	}
+}

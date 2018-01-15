@@ -1,5 +1,20 @@
 # Changelog
 
+## v2.1.0
+
+> * Overall: This update should provide a better/easier way to build out multiple themes for your apps if you need it See below for more details
+> * Added: `-f` and `--folders` which when added to cmd tells sass-pack to go off folder/dir names instead of file names
+>   * Use this setting if you want to support multiple theme types that are seperated by folders in your theme directories
+>   * Note: Alias settings do carry over with this as well
+> * Added: `-e` and `--external` which should be a string that tells sass-pack of external files to compile to their own `.css`
+>   * This will look for the path specified (accepts globs) and build out a compiled css for each individual one sass-pack finds
+>   * Note: Alias settings will carry over into the external files so alias can be supported here too
+> * Improved: Better handling for theme layouts
+> * Improved: Test clean up
+> * Changed: eslint to spaces instead of tabs
+> * Added: A more complex multi-level testing theme
+> * Updated: `fs-extra` dependency to latest version (5.0.0)
+
 ## v2.0.0
 
 > * Fix for Alias bug if file name existed in the folder path it caused issues

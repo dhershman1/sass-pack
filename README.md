@@ -1,11 +1,12 @@
-[![Build Status](https://travis-ci.org/dhershman1/sass-pack.svg?branch=master)](https://travis-ci.org/dhershman1/sass-pack) [![npm](https://img.shields.io/npm/v/sass-pack.svg?style=flat)](https://www.npmjs.com/package/sass-pack) [![Downloads](https://img.shields.io/npm/dm/sass-pack.svg?style=flat)](https://www.npmjs.com/package/sass-pack) [![dependencies Status](https://david-dm.org/dhershman1/sass-pack/status.svg)](https://david-dm.org/dhershman1/sass-pack) [![devDependencies Status](https://david-dm.org/dhershman1/sass-pack/dev-status.svg)](https://david-dm.org/dhershman1/sass-pack?type=dev) 
+[![Build Status](https://img.shields.io/travis/dhershman1/sass-pack.svg?style=for-the-badge)](https://travis-ci.org/dhershman1/sass-pack)
+[![npm](https://img.shields.io/npm/v/sass-pack.svg?style=for-the-badge)](https://www.npmjs.com/package/sass-pack)
+[![Downloads](https://img.shields.io/npm/dm/sass-pack.svg?style=for-the-badge)](https://www.npmjs.com/package/sass-pack)
+[![dependencies Status](https://img.shields.io/david/dhershman1/sass-pack.svg?style=for-the-badge)](https://david-dm.org/dhershman1/sass-pack)
+[![devDependencies Status](https://img.shields.io/david/dev/dhershman1/sass-pack.svg?style=for-the-badge)](https://david-dm.org/dhershman1/sass-pack?type=dev)
 
 # Sass-Pack
 
 A simple CLI system for compiling sass down to css with additional support for other options and features
-
-Install:
-`npm i -D sass-pack`
 
 ## Changelog
 
@@ -23,6 +24,8 @@ You can view the changelog here: https://github.com/dhershman1/sass-pack/blob/ma
  - `-x --sourcemaps <path>` - Tell sass pack if you want to generate sourcemaps as well - `optional` default: `false`
  - `-q --hardquit` - Add this tag if when sass-pack runs into a Sass syntax error you would like it to hard quit the process, if you're using a watch tool you can leave this off and sass-pack will await changes and try again.
  - `-a --alias <path>` - The path to replace the alias with
+ - `-e --external <path>` - Path to read for your external files can accept a glob
+ - `-f --folders` - `boolean` style argument that tells sass-pack to use folder/dir names containing themes instead of file names
 
 Example:
 > sass-pack -o public/css -s src/app,public/scss/themes -m src/config/css_manifest.json
@@ -101,3 +104,56 @@ sassPack({
   //Do some things once sass pack is finished
 });
 ```
+
+## External and Folders
+
+With v2.1.0 there are 2 new options introduced, the ability to set a folders boolean, and the ability to set a path to some external files
+
+### Folders
+
+So with this option sass-pack will read the folder that the file lives in and use it as the theme name, instead of the actual file name itself.
+
+Example:
+
+```
+/themes
+| /default
+  | /thing.scss
+| /theme2
+  | /index.scss
+
+sass-pack -o output -s themes/**/*.scss -f
+
+then:
+
+/output
+| /default.css
+| /theme2.css
+```
+
+### Externals
+
+The external option allows you to bring in scss files that you want to have their own css output after compile.
+
+Example:
+
+```
+/themes
+| /default
+  | /thing.scss
+  | /thing-email.scss
+| /theme2
+  | /index.scss
+  | /theme2-email.scss
+
+sass-pack -o output -s themes/**/!(*-email).scss -f -e themes/**/*-email.scss
+
+then:
+
+/output
+| /default.css
+| /theme2.css
+| /theme2-email.css
+| /thing-email.css
+```
+
