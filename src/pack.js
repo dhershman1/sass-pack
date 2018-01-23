@@ -1,7 +1,7 @@
 const path = require('path');
 const sass = require('node-sass');
 const globby = require('globby');
-const { mkdirp, readFile, writeFile, writeJson } = require('fs-extra');
+const { mkdirp, readFileSync, writeFile, writeJson } = require('fs-extra');
 
 /**
  * Our main factory function to run sass-pack
@@ -51,6 +51,7 @@ module.exports = opts => {
   const compile = (file, isExternal) => new Promise((resolve, reject) => {
     const { name, dir, ext } = path.parse(file);
 
+
     sass.render({
       file,
       importer: (url, prev, done) => {
@@ -63,19 +64,15 @@ module.exports = opts => {
           if (!fixedUrl.includes(ext)) {
             fixedUrl += ext;
           }
-          readFile(fixedUrl, 'utf8', (err, data) => {
-            if (err) {
-              return reject(err);
-            }
 
-            return done({
-              file: fixedUrl,
-              contents: data
-            });
+          return done({
+            file: fixedUrl,
+            contents: readFileSync(fixedUrl, 'utf8')
           });
-        } else {
-          done();
+
         }
+
+        return done();
       },
       outFile: opts.output,
       includePaths: [dir],

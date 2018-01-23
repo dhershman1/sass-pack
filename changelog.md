@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.1.1
+
+> * Fixed: Sometimes a hanging bug would occur with multi theme compiling not sure if this was due to something weird in the async `readFile` or not but this call should be sync now instead to remedy the issue.
+> * Upgraded the tests to re create and test this bug
+
 ## v2.1.0
 
 > * Overall: This update should provide a better/easier way to build out multiple themes for your apps if you need it See below for more details

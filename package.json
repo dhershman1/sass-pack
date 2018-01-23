@@ -1,6 +1,6 @@
 {
   "name": "sass-pack",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "A simple sass compiler/minifier CLI tool with optional manifest options",
   "scripts": {
     "clean": "rimraf src/tests/outputs/**",

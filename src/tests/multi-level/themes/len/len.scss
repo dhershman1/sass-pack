@@ -1,0 +1,526 @@
+@import '../framework/_default-variables';
+
+$monza: #C3002F;
+$burgundy: #990025;
+$mineShaft: #2F2F2F;
+$tundora: #4C4C4C;
+$gray: #8A8A8A;
+$silver: #C1C1C1;
+
+@font-face {
+    font-family: Nis-bold;
+    src: url('/dist/css/fonts/NissanBrandW15-Bold.woff') format('woff');
+}
+
+/************************
+* Mapping of Variables
+*************************/
+// HTML Elements
+$link: $black;
+$body: $tundora;
+
+//Error
+$error: $monza;
+
+// Appointment
+$appointment-bg: $gallery;
+$appointment-light-bg: $alabaster;
+
+// Buttons
+$primary-button-bg--hover: $burgundy;
+$primary-button-bg: $monza;
+$primary-button-box-shadow: transparent;
+$primary-button-bg--disabled: $monza;
+$primary-button-border--disabled: transparent;
+$primary-button-color--disabled: rgba(255, 255, 255, .5);
+
+// Calendar
+$calendar-controls: $gallery;
+$calendar-selected-time: $monza;
+$calendar-time-slot: $tundora;
+$calendar-time-slot--disabled: $gallery;
+
+// Dealer Selection
+$dealer-list-border-color: $tundora;
+
+// Details
+$details-selected-item: $monza;
+$details-list-default: $black;
+$details-list-bottom-border: $dusty-gray;
+$details-list-bottom-border--active: $monza;
+$details-feature-bg: $gallery;
+$details-specs-border: $dusty-gray;
+$details-main-border: $dusty-gray;
+
+// Footer
+$footer-border: transparent;
+$footer-wrapper-bg: transparent;
+
+// Headers
+$header-color: $tundora;
+
+// Location Box
+$location-bg: $gallery;
+$location-border: $black;
+
+// Local Best Seller
+$local-best-seller: $monza;
+
+// Original Equipment
+$original-equipment: $tundora;
+
+// Header
+$nav-icon-color: $black;
+
+// Order Summary
+$order-summary-bg--alt: $gallery;
+$order-totals-border: $tundora;
+
+// Order Totals
+$order-totals-border: $gallery;
+$order-totals-bg: $gallery;
+
+// Payment
+$payment-body: $alabaster;
+$payment-credit-card-bg: $gallery;
+
+// Product Tile
+$tile-bg: $white;
+$tile-border: $black;
+$tile-rec-bg: $black;
+$tile-rec-icon-border: $black;
+$tile-compare-bg: $white-85;
+$tile-compare-label-color: $tundora;
+$tile-promotions-bg: $gallery;
+$tile-price-description-border: $dusty-gray;
+
+// Promotions
+$promo: $green-leaf;
+$promo-text: $white;
+$promo-border-bottom: $white;
+
+// Search
+$search-bg: $gallery;
+$search-border: $monza;
+$search-labels: $tundora;
+
+// Services
+$services-includes-border: $tundora;
+$services-comments-border: $dusty-gray;
+$services-bg--alt: $gallery;
+
+// Receipt
+$receipt-section-bg: $gallery;
+
+// Switch Component
+$slider-bg: $monza;
+$slider-input: $black;
+$slider-input-shadow: $black;
+$slider-circle: $white;
+
+// Tabs Component
+$tabs-link: $tundora;
+$tabs-link-border: $monza;
+$tabs--active-bg: $gallery;
+$tabs--active-color: $tundora;
+$tabs--not-active: $monza;
+
+// Tire Coach Colors
+$tire-coach-bg: $black;
+$tire-coach-button-cta: $black; // small screens only
+$tire-coach-header: $white;
+$tire-coach-hr-border: $silver-chalice;
+$tire-coach-rec-icon-bg: $white;
+$tire-coach-rec-icon-border: $black;
+$tire-coach-form-bg: $white;
+
+// Reviews
+$star: $saffron;
+
+$vehicle-tire-size-color: $stack;
+
+// Modaler Colors
+$modal-header: $white;
+$modal-content-bg: $white;
+
+$form-icon-error: $monza;
+
+@import '../framework/_framework';
+
+h1 {
+	font-family: Nis-bold;
+	text-transform: uppercase;
+  color: $black;
+  font-size: 33px;
+}
+
+.dealer__header {
+  font-size: 33px;
+}
+
+.form__input,
+.sort__select,
+.input__field,
+.tile__quantity-input {
+  border-radius: 0;
+
+  &:focus {
+    border-color: $mineShaft;
+  }
+}
+
+.header {
+	padding-bottom: 0;
+
+  .header-dealer-name {
+    color: $tundora;
+    font-size: 18px;
+    padding-top: 20px;
+    text-align: right;
+  }
+
+  .header-customer-service {
+  	display: none;
+  }
+}
+
+.footer {
+	color: $white;
+  background-color: $black;
+  padding: 30px 15px 15px 15px;
+
+	&__links {
+		text-align: right;
+	}
+
+	&__links-item {
+
+		&:not(:last-child) {
+			margin-right: 2px;
+		}
+
+		a {
+			font-size: 14px;
+			color: $white;
+			text-decoration: none;
+			font-weight: bold;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+
+		&:after {
+			padding-left: 5px;
+			content: '|';
+		}
+	}
+
+	&__links-item:last-child {
+		&:after {
+			content : '';
+		}
+	}
+
+	&__copyright {
+		font-size: 13px;
+	}
+
+	@include media-breakpoint-down(sm) {
+		&__copyright,
+		&__links {
+			text-align: center;
+		}
+	}
+}
+
+.button[disabled] {
+  opacity: 1;
+}
+
+.button {
+  text-transform: uppercase;
+	padding: 0.75rem .4rem 0.65rem;
+	font-weight: 700;
+  font-size: 14px;
+
+  &--primary,
+  &:hover,
+  &:active {
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  &:active {
+    background-color: $monza;
+    box-shadow: inset 0 1px 3px 0 $black;
+  }
+
+  &:focus {
+    box-shadow: 0 0 4px 0 $black;
+  }
+}
+
+.tabs {
+  color: $tundora;
+
+  &__link {
+    border-radius: 0 !important;
+    border-width: 2px !important;
+    border-bottom: 2px solid $monza !important;
+  }
+
+  &__item {
+    top: 2px;
+  }
+
+  .is-active &__bottom {
+    position: absolute;
+    top: 42px;
+    left: 2px;
+    width: 123px;
+    height: 2px;
+    background-color: $gallery;
+    z-index: 1000;
+  }
+
+  .is-not-active {
+    color: $white;
+    background: linear-gradient($tundora, $mineShaft);
+    border-width: 2px !important;
+  }
+}
+
+.search {
+  border-radius: 0;
+  border-width: 2px;
+
+  &__select {
+    border-radius: 0;
+
+    &:focus {
+      border-color: $mineShaft;
+    }
+  }
+}
+
+.location {
+  border-radius: 0;
+
+  &__label {
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+
+  &__search-button-icon {
+    font-weight: 700;
+  }
+
+  &__search-input {
+    border-radius: 0;
+    border-right: none;
+  }
+
+  .error-input {
+    border-color: $silver;
+  }
+
+  .location--has-error {
+    border-radius: 0;
+  }
+}
+
+.dealer-list {
+  border-top: 1px dashed $silver;
+
+  &__name {
+    font-size: 16px;
+  }
+}
+
+.pagination {
+  &__link {
+    color: $black;
+
+    &:hover {
+      text-decoration: underline;
+      color: $monza;
+    }
+  }
+
+  .active.pagination__item {
+    .pagination__link {
+      background-color: $monza;
+      border: none;
+    }
+  }
+}
+
+.tire-coach {
+  border-radius: 0;
+
+  &__form-wrapper {
+    border-radius: 0;
+  }
+}
+
+.range,
+.check-options {
+  &__header {
+    font-weight: 400;
+  }
+}
+
+.range {
+  &__label {
+    font-weight: 700;
+  }
+}
+
+.tile {
+  &__tire-brand {
+    color: $black;
+  }
+
+  &__tire-name {
+    font-weight: 700;
+    color: $monza;
+
+    &:hover {
+      color: $black;
+    }
+  }
+
+  &__original-equipment {
+    background-color: $tundora;
+  }
+
+  &__quantity-input {
+    border-radius: 0;
+  }
+}
+
+.vehicle-info__we-found {
+  color: $black;
+}
+
+.details {
+  &__header {
+    font-family: Nis-bold;
+    color: $black;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &__back {
+    font-family: Helvetica;
+    color: $black;
+  }
+
+  &__list {
+    &__item {
+      top: 2px;
+      width: 100%;
+    }
+
+    &__item--active {
+      border-bottom-width: 4px;
+    }
+
+    &__anchor {
+      color: $tundora;
+      margin-bottom: 10px;
+
+      &:hover {
+        color: $tundora;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__specs {
+    border-bottom-style: dashed;
+    border-bottom-width: 1px;
+    margin: 0;
+
+    &__item {
+      padding: 10px 10px 10px 0;
+      font-weight: 400;
+    }
+
+    a:hover {
+      color: $monza;
+    }
+  }
+
+  &__original-equipment {
+    background-color: $tundora;
+  }
+
+  &__border {
+    margin-top: -1px;
+  }
+}
+
+.calendar {
+	&__controls-text {
+		display: none;
+	}
+
+	&__timeslot--selected {
+		color: $white;
+	}
+}
+
+.services__comments-textarea {
+  border-radius: 0;
+}
+
+.order-summary__header,
+.appointment__header,
+.billing__header,
+.credit-card__header,
+.receipt__header,
+.receipt__sub-header,
+.bill-summary__header,
+.appointment__header,
+.product-summary__header {
+  color: $black;
+}
+
+.credit-card {
+  border: 1px solid $black;
+}
+
+.receipt__section {
+  background: $white;
+}
+
+@include media-breakpoint-up(md){
+	.header {
+		padding: 20px 0;
+	}
+
+	.header-dealer-name {
+		text-align: right;
+		margin-top: 0;
+	}
+
+	.tile {
+
+		&__qty-button-wrapper {
+			margin-top: 20px;
+		}
+
+	}
+}
+
+@include media-breakpoint-down(md) {
+  .tire-coach {
+    &__show-button,
+    &__back-btn-left,
+    &__back-btn-right {
+      border-radius: 0;
+    }
+  }
+}
