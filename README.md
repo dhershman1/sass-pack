@@ -14,7 +14,7 @@ You can view the changelog here: https://github.com/dhershman1/sass-pack/blob/ma
 
 ## CLI Usage
 
-**PLEASE NOTE: `theme` is now depricated, source is now the main option to use as it should be please convert asap**
+**PLEASE NOTE: as of 2.0.0 `theme` has been removed as an option**
 
  - `sass-pack [options]` - Run sass-pack using your options
  - `-s --source <path>` - Set the source path of page based scss (If you have floating sass files with your pages) - `optional`
@@ -42,13 +42,15 @@ The options are the same as if using the cli to send a list of paths when using 
 
 **AS OF v1.5.0 using single letter property names is NO LONGER supported**
 
-* `source` - Source file paths (page sass)
-* `output` - Output path
-* `manifest` - Manifest path
+* `source` - Source file paths (Supports Globs)
+* `output` - Output path (Supports Globs)
+* `manifest` - Manifest path (Supports Globs)
 * `minify` - Minify type
 * `hardquit` - Kill process if `reject` is triggered
-* `sourcemaps` - Path to sourcemaps
+* `sourcemaps` - Path to sourcemaps (Supports Globs)
 * `alias` - Path to replace alias with
+* `folders` - Boolean to tell sass-pack to use folder names
+* `external` - Path to tell sass-pack what files to pack into their own css files to output (Supports Globs)
 
 Example:
 ```js
