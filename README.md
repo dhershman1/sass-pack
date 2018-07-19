@@ -30,6 +30,7 @@ You can view the changelog here: https://github.com/dhershman1/sass-pack/blob/ma
 
 Example:
 > sass-pack -o public/css -s src/app,public/scss/themes -m src/config/css_manifest.json
+
 > sass-pack -o dist/css -s src/app/scss/main,src/app/scss/themes -f -q
 
 OR
