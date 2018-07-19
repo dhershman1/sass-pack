@@ -8,6 +8,8 @@
 
 A simple CLI system for compiling sass down to css with additional support for other options and features
 
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
+
 ## Changelog
 
 You can view the changelog here: https://github.com/dhershman1/sass-pack/blob/master/changelog.md

@@ -9,6 +9,7 @@
 - Fixed some weird edge case bugs
 - Architecture re organization
 - Improved flow and readability
+- Swapped out eslint in favor of standard js
 
 ## v2.1.1
 
