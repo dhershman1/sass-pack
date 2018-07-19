@@ -1,6 +1,5 @@
 [![Build Status](https://img.shields.io/travis/dhershman1/sass-pack.svg?style=flat-square)](https://travis-ci.org/dhershman1/sass-pack)
 [![npm](https://img.shields.io/npm/v/sass-pack.svg?style=flat-square)](https://www.npmjs.com/package/sass-pack)
-[![Downloads](https://img.shields.io/npm/dm/sass-pack.svg?style=flat-square)](https://www.npmjs.com/package/sass-pack)
 [![dependencies Status](https://img.shields.io/david/dhershman1/sass-pack.svg?style=flat-square)](https://david-dm.org/dhershman1/sass-pack)
 [![devDependencies Status](https://img.shields.io/david/dev/dhershman1/sass-pack.svg?style=flat-square)](https://david-dm.org/dhershman1/sass-pack?type=dev)
 
