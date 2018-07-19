@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.2.0
+
+**The builk of the commit is the movement of the test folder to root level**
+
+- Heavy improvements to speed and optimizations
+  - I removed the limitations and fixed the bugs preventing me from taking advantage of async capabilities
+- Fixed some weird edge case bugs
+- Architecture re organization
+- Improved flow and readability
+
 ## v2.1.1
 
 > * Fixed: Sometimes a hanging bug would occur with multi theme compiling not sure if this was due to something weird in the async `readFile` or not but this call should be sync now instead to remedy the issue.

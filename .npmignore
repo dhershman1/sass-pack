@@ -1,6 +1,4 @@
 changelog.md
 .travis.yml
-bitbucket-pipelines.yml
 tests/
 src/tests/
-.eslintrc.js
