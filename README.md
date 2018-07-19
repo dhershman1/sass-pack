@@ -30,6 +30,7 @@ You can view the changelog here: https://github.com/dhershman1/sass-pack/blob/ma
 
 Example:
 > sass-pack -o public/css -s src/app,public/scss/themes -m src/config/css_manifest.json
+> sass-pack -o dist/css -s src/app/scss/main,src/app/scss/themes -f -q
 
 OR
 
@@ -41,7 +42,7 @@ Sass-Pack can now be used as a simple function call, it will return a promise an
 
 The options are the same as if using the cli to send a list of paths when using the API put the paths into an array of strings
 
-**AS OF v1.5.0 using single letter property names is NO LONGER supported**
+**AS OF >=v1.5.0 using single letter property names is NO LONGER supported**
 
 * `source` - Source file paths (Supports Globs)
 * `output` - Output path (Supports Globs)
