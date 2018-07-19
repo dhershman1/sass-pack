@@ -3,9 +3,10 @@
   "version": "2.1.1",
   "description": "A simple sass compiler/minifier CLI tool with optional manifest options",
   "scripts": {
-    "clean": "rimraf src/tests/outputs/**",
-    "test": "npm run clean && node src/tests/tests.js | tap-spec",
-    "compile": "sass-pack -a src/tests/multi-level -o src/tests/outputs/multi -s \"src/tests/multi-level/themes/!(framework)/!(*-email).scss\" -e src/tests/multi-level/themes/**/*-email.scss -f -n compressed -x src/tests/outputs/multi -m src/tests/outputs/multi/manifest.json"
+    "clean": "rimraf tests/outputs/**",
+    "test": "npm run clean && tape tests/tests.js | tap-spec",
+    "compile": "sass-pack -a tests/multi-level -o tests/outputs/multi -s \"tests/multi-level/themes/!(framework)/!(*-email).scss\" -e tests/multi-level/themes/**/*-email.scss -f -n compressed -x tests/outputs/multi -m tests/outputs/multi/manifest.json",
+    "lint": "standard --fix tests/*.js"
   },
   "keywords": [
     "sass",
@@ -31,15 +32,15 @@
     "sass-pack": "./src/index.js"
   },
   "devDependencies": {
-    "eslint": "4.9.0",
     "rimraf": "2.6.2",
-    "tap-spec": "4.1.1",
-    "tape": "4.8.0"
+    "standard": "^11.0.1",
+    "tap-spec": "5.0.0",
+    "tape": "4.9.1"
   },
   "dependencies": {
-    "fs-extra": "^5.0.0",
-    "globby": "7.1.1",
-    "meow": "4.0.0",
-    "node-sass": "4.7.2"
+    "fs-extra": "7.0.0",
+    "globby": "8.0.1",
+    "meow": "5.0.0",
+    "node-sass": "4.9.2"
   }
 }
