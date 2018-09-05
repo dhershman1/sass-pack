@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.1
+
+- Updated `node-sass` to address the vulnerability issue within node-sass
+
 ## v2.2.0
 
 **The builk of the commit is the movement of the test folder to root level**

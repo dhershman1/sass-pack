@@ -1,12 +1,12 @@
 {
   "name": "sass-pack",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "A simple sass compiler/minifier CLI tool with optional manifest options",
   "scripts": {
     "clean": "rimraf tests/outputs/**",
     "test": "npm run clean && tape tests/tests.js | tap-spec",
     "compile": "sass-pack -a tests/multi-level -o tests/outputs/multi -s \"tests/multi-level/themes/!(framework)/!(*-email).scss\" -e tests/multi-level/themes/**/*-email.scss -f -n compressed -x tests/outputs/multi -m tests/outputs/multi/manifest.json",
-    "lint": "standard --fix tests/*.js"
+    "lint": "standard --fix src/*.js"
   },
   "keywords": [
     "sass",
@@ -41,6 +41,6 @@
     "fs-extra": "7.0.0",
     "globby": "8.0.1",
     "meow": "5.0.0",
-    "node-sass": "4.9.2"
+    "node-sass": "4.9.3"
   }
 }
