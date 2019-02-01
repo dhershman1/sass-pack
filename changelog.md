@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.2
+
+- Fixed API usage bug
+
 ## v2.2.1
 
 - Updated `node-sass` to address the vulnerability issue within node-sass
