@@ -1,6 +1,7 @@
 {
   "name": "sass-pack",
-  "version": "2.2.1",
+  "version": "2.2.2",
+  "main": "src/pack.js",
   "description": "A simple sass compiler/minifier CLI tool with optional manifest options",
   "scripts": {
     "clean": "rimraf tests/outputs/**",
@@ -33,14 +34,14 @@
   },
   "devDependencies": {
     "rimraf": "2.6.2",
-    "standard": "11.0.1",
+    "standard": "12.0.1",
     "tap-spec": "5.0.0",
-    "tape": "4.9.1"
+    "tape": "4.9.2"
   },
   "dependencies": {
-    "fs-extra": "7.0.0",
-    "globby": "8.0.1",
+    "fs-extra": "7.0.1",
+    "globby": "9.0.0",
     "meow": "5.0.0",
-    "node-sass": "4.9.3"
+    "node-sass": "4.11.0"
   }
 }
