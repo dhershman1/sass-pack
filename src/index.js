@@ -17,6 +17,7 @@ const cli = require('meow')(`
       -a, --alias [option]    the alias to use while looking for imports
       -f, --folders  tell sass-pack to use folder/dir names for theme naming
       -e, --external [path]  comma list of paths to treat as external css (they get their own .css file)
+      -p, --preserve         preserve the folder structure of your scss when compiling to css
 
     Examples
       $ sass-pack --output=dist/css --source=src/sass/*.scss
@@ -69,6 +70,11 @@ const cli = require('meow')(`
       type: 'string',
       alias: 'n',
       default: 'nested'
+    },
+    preserve: {
+      type: 'boolean',
+      alias: 'p',
+      default: false
     }
   }
 })
