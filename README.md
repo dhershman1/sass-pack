@@ -1,12 +1,13 @@
-[![Build Status](https://img.shields.io/travis/dhershman1/sass-pack.svg?style=for-the-badge)](https://travis-ci.org/dhershman1/sass-pack)
-[![npm](https://img.shields.io/npm/v/sass-pack.svg?style=for-the-badge)](https://www.npmjs.com/package/sass-pack)
-[![Downloads](https://img.shields.io/npm/dm/sass-pack.svg?style=for-the-badge)](https://www.npmjs.com/package/sass-pack)
-[![dependencies Status](https://img.shields.io/david/dhershman1/sass-pack.svg?style=for-the-badge)](https://david-dm.org/dhershman1/sass-pack)
-[![devDependencies Status](https://img.shields.io/david/dev/dhershman1/sass-pack.svg?style=for-the-badge)](https://david-dm.org/dhershman1/sass-pack?type=dev)
+[![Build Status](https://img.shields.io/travis/dhershman1/sass-pack.svg?style=flat-square)](https://travis-ci.org/dhershman1/sass-pack)
+[![npm](https://img.shields.io/npm/v/sass-pack.svg?style=flat-square)](https://www.npmjs.com/package/sass-pack)
+[![dependencies Status](https://img.shields.io/david/dhershman1/sass-pack.svg?style=flat-square)](https://david-dm.org/dhershman1/sass-pack)
+[![devDependencies Status](https://img.shields.io/david/dev/dhershman1/sass-pack.svg?style=flat-square)](https://david-dm.org/dhershman1/sass-pack?type=dev)
 
 # Sass-Pack
 
 A simple CLI system for compiling sass down to css with additional support for other options and features
+
+[![JavaScript Style Guide](https://cdn.rawgit.com/standard/standard/master/badge.svg)](https://github.com/standard/standard)
 
 ## Changelog
 
@@ -30,6 +31,8 @@ You can view the changelog here: https://github.com/dhershman1/sass-pack/blob/ma
 Example:
 > sass-pack -o public/css -s src/app,public/scss/themes -m src/config/css_manifest.json
 
+> sass-pack -o dist/css -s src/app/scss/main,src/app/scss/themes -f -q
+
 OR
 
 > sass-pack --output=public/css --source=src/app,public/scss/themes --manifest=src/config/css_manifest.json
@@ -40,7 +43,7 @@ Sass-Pack can now be used as a simple function call, it will return a promise an
 
 The options are the same as if using the cli to send a list of paths when using the API put the paths into an array of strings
 
-**AS OF v1.5.0 using single letter property names is NO LONGER supported**
+**AS OF >=v1.5.0 using single letter property names is NO LONGER supported**
 
 * `source` - Source file paths (Supports Globs)
 * `output` - Output path (Supports Globs)

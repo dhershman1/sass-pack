@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.2.2
+
+- Fixed API usage bug
+
+## v2.2.1
+
+- Updated `node-sass` to address the vulnerability issue within node-sass
+
 ## v2.2.0
 
 **The builk of the commit is the movement of the test folder to root level**
@@ -9,6 +17,7 @@
 - Fixed some weird edge case bugs
 - Architecture re organization
 - Improved flow and readability
+- Swapped out eslint in favor of standard js
 
 ## v2.1.1
 
