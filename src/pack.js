@@ -5,8 +5,8 @@ const { readFileSync } = require('fs-extra')
 const write = require('./write')
 
 /**
- * Our main factory function to run sass-pack
- * @name sassPack
+ * Packs the sass into proper CSS based on the options provided
+ * @name pack
  * @param {object} opts an object containing our paths
  * @param {string} opts.output The output string path
  * @param {string} opts.source The source file string paths
@@ -19,7 +19,7 @@ const write = require('./write')
  * @param {boolean} opts.folders Boolean to tell sass pack to use folder/dir names
  * @return {null} returns the executed promise from globby
  */
-const pack = opts => {
+function pack (opts) {
   const sources = opts.source.split(',')
   const external = opts.external ? opts.external.split(',') : ''
 

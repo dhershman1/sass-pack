@@ -30,18 +30,18 @@
   "author": "Dustin Hershman",
   "license": "ISC",
   "bin": {
-    "sass-pack": "./src/index.js"
+    "sass-pack": "bin/sass-pack"
   },
   "devDependencies": {
-    "rimraf": "2.6.2",
-    "standard": "12.0.1",
+    "rimraf": "3.0.0",
+    "standard": "14.0.2",
     "tap-spec": "5.0.0",
-    "tape": "4.9.2"
+    "tape": "4.11.0"
   },
   "dependencies": {
-    "fs-extra": "7.0.1",
-    "globby": "9.0.0",
+    "fs-extra": "8.1.0",
+    "globby": "10.0.1",
     "meow": "5.0.0",
-    "node-sass": "4.11.0"
+    "node-sass": "4.12.0"
   }
 }
